@@ -1,0 +1,30 @@
+{
+  "name": "dao-gqk",
+  "version": "1.0.0",
+  "description": "GraphQL + MongoDB server for DAO",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write \"**/*.js\"",
+    "start": "npm run server",
+    "server": "nodemon --exec babel-node server/index.js"
+  },
+  "author": "Alan Lee <alanjlee89@gmail.com>",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.5",
+    "prettier": "^2.1.2"
+  },
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.3.0",
+    "graphql-tools": "^6.2.3",
+    "graphql-yoga": "^1.18.3",
+    "merge-graphql-schemas": "^1.7.8",
+    "mongoose": "^5.10.7",
+    "nodemon": "^2.0.4",
+    "uuid": "^8.3.0"
+  }
+}
