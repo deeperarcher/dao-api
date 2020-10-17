@@ -10,7 +10,6 @@ export default {
   Mutation: {
     insertIntakeForm: async (parent, args, context, info) => {
       const newIntakeForm = await new IntakeForm(args.input);
-      console.log('args', args);
 
       return newIntakeForm.save().catch(err => console.log('ERR', err));
     },

@@ -1,7 +1,7 @@
 import { mergeResolvers } from 'merge-graphql-schemas';
 
-import IntakeForm from './domains/forms/intake-form';
+import IntakeFormResolver from './domains/forms/intake-form/resolver';
 
-const resolvers = [IntakeForm.resolver];
+const resolvers = [IntakeFormResolver];
 
 export default mergeResolvers(resolvers, { all: true });

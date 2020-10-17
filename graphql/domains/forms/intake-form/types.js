@@ -1,6 +1,6 @@
 export default `
 type Query {
-  intakeForm(_id: ID!): IntakeForm!
+  intakeForm(_id: String!): IntakeForm!
   intakeForms: [IntakeForm!]!
 }
 
@@ -9,9 +9,9 @@ type Mutation {
 }
 
 type IntakeForm {
-    PID:  Int
-    firstName:String
-    lastName:  String
+    PID:  Int!
+    firstName: String
+    lastName: String
     dateOfBirth: String
     sex: Sex
     race: Race
@@ -33,7 +33,4 @@ type IntakeForm {
     knownTime:  Boolean 
     timeOfDAReferral: String
     arrestingDistrict: Int
-
-}`
-
-;
+}`;

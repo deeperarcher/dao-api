@@ -2,7 +2,8 @@ import { mergeTypes } from 'merge-graphql-schemas';
 
 import enums from '../enums';
 
-import IntakeForm from './domains/forms/intake-form';
+import IntakeFormTypes from './domains/forms/intake-form/types';
+import IntakeFormInput from './domains/forms/intake-form/input';
 
 const formattedEnums = Object.keys(enums).map(
   key => `enum ${key} {
@@ -10,6 +11,6 @@ const formattedEnums = Object.keys(enums).map(
   }`
 );
 
-const typeDefs = [...formattedEnums, ...IntakeForm.typeDefs];
+const typeDefs = [IntakeFormInput, IntakeFormTypes, ...formattedEnums];
 
 export default mergeTypes(typeDefs, { all: true });

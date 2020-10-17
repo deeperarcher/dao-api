@@ -29,7 +29,7 @@ mongoose
     useNewUrlParser: true,
   })
   .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log(err));
+  .catch(err => console.log(err));
 
 const server = new GraphQLServer({
   schema,
