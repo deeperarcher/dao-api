@@ -1,1 +1,1 @@
-export default ['Race1', 'Race2', 'Race3'];
+export default ['AFRICAN_AMERICAN', 'HISPANIC', 'WHITE', 'ASIAN', 'NATIVE_AMERICAN', 'MIXED_RACE', 'OTHER'];

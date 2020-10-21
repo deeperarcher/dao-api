@@ -1,1 +1,14 @@
-export default ['Relation1', 'Relation2', 'relation3'];
+export default [
+  'ADOPTIVE_PARENT',
+  'AUNT_UNCLE',
+  'CONGREGATE',
+  'BROTHER',
+  'FATHER',
+  'FOSTER_PARENT',
+  'GRANDPARENT',
+  'MOTHER',
+  'OTHER',
+  'SISTER',
+  'STEPFATHER',
+  'STEPMOTHER',
+];
