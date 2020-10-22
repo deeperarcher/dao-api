@@ -1,4 +1,4 @@
-import IntakeForm from '../../../../server/models/intake-form';
+import IntakeForm from '../../../server/models/intake-form';
 
 export default {
   Query: {

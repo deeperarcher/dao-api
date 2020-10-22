@@ -1,6 +1,6 @@
 import { mergeResolvers } from 'graphql-tools';
 
-import IntakeFormResolver from './domains/forms/intake-form/resolver';
+import IntakeFormResolver from './forms/intake-form/resolver';
 
 const resolvers = [IntakeFormResolver];
 
