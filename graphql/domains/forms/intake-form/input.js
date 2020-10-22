@@ -1,7 +1,8 @@
-export default `input IntakeFormInput {
+const IntakeFormInput = `
+  input IntakeFormInput {
     PID: Int
-    firstName:String
-    lastName:  String
+    firstName: String
+    lastName: String
     dateOfBirth: String
     sex: Sex
     race: Race
@@ -19,9 +20,34 @@ export default `input IntakeFormInput {
     guardian2LastName: String
     guardian2Relation: Relation
 
-    date: String
-    knownTime:  Boolean 
-    timeOfDAReferral: String
+    incidentDate: String
+    isIncidentTimeKnown: Boolean
+    incidentAddress: String
+
+    arrestDate: String
+    referralDate: String
     arrestingDistrict: Int
 
-}`;
+    officers: [String]
+    petitions: [PetitionInput]
+  }`;
+
+const PetitionInput = `
+  input PetitionInput {
+    petitionNumber: String
+    dateFiled: String
+    charges: [PetitionChargeInput]
+  }`;
+
+const PetitionChargeInput = `
+  input PetitionChargeInput {
+    code: String
+    grade: String
+  }`;
+
+
+export default [
+  IntakeFormInput,
+  PetitionChargeInput,
+  PetitionInput,
+];

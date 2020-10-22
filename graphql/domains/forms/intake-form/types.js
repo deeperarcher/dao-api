@@ -1,14 +1,16 @@
-export default `
-type Query {
-  intakeForm(_id: String!): IntakeForm!
-  intakeForms: [IntakeForm!]!
-}
+const Query = `
+  type Query {
+    intakeForm(_id: String!): IntakeForm!
+    intakeForms: [IntakeForm!]!
+  }`;
 
-type Mutation {
-  insertIntakeForm(input: IntakeFormInput):  IntakeForm!
-}
+const Mutation = `
+  type Mutation {
+    insertIntakeForm(input: IntakeFormInput):  IntakeForm!
+  }`;
 
-type IntakeForm {
+const IntakeForm = `
+  type IntakeForm {
     PID:  Int!
     firstName: String
     lastName: String
@@ -29,8 +31,37 @@ type IntakeForm {
     guardian2LastName: String
     guardian2Relation: Relation
 
-    date: String
-    knownTime:  Boolean 
+    incidentDate: String
+    isIncidentTimeKnown:  Boolean 
+    incidentAddress: String
+
+    arrestDate: String
     timeOfDAReferral: String
     arrestingDistrict: Int
+    officers: [Int]
+
+    petitions: [IntakeFormPetition]
 }`;
+
+const IntakeFormPetition = `
+  type IntakeFormPetition {
+    petitionNumber: Int
+    dateFiled: String
+    charges: [PetitionCharge]
+  }
+`;
+
+const PetitionCharge = `
+  type PetitionCharge {
+    code: String
+    grade: String
+  }
+`;
+
+export default [
+  IntakeForm,
+  IntakeFormPetition,
+  Mutation,
+  PetitionCharge,
+  Query,
+];

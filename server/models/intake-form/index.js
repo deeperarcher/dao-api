@@ -28,11 +28,26 @@ const IntakeFormSchema = new Schema({
   guardian2LastName: String,
   guardian2Relation: { enum: enums.Relation, type: String },
 
-  date: Date,
-  knownTime: { required: true, type: Boolean },
-  timeOfDAReferral: Date,
+  incidentDate: Date,
+  isIncidentTimeKnown: { required: true, type: Boolean },
+  incidentAddress: String,
+
+  arrestDate: Date,
+  referralDate: Date,
   arrestingDistrict: Number,
-  officers: [Number], //payroll#
+  officers: [String], //payroll#
+  petitions: [
+    {
+      petitionNumber: Number,
+      dateFiled: String,
+      charges: [
+        {
+          code: String,
+          grade: String,
+        },
+      ],
+    },
+  ],
 });
 
 export default mongoose.model('IntakeForm', IntakeFormSchema);

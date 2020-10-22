@@ -1,4 +1,4 @@
-import { mergeResolvers } from 'merge-graphql-schemas';
+import { mergeResolvers } from 'graphql-tools';
 
 import IntakeFormResolver from './domains/forms/intake-form/resolver';
 

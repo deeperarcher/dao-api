@@ -1,4 +1,4 @@
-import { mergeTypes } from 'merge-graphql-schemas';
+import { mergeTypeDefs } from 'graphql-tools';
 
 import enums from '../enums';
 
@@ -11,6 +11,6 @@ const formattedEnums = Object.keys(enums).map(
   }`
 );
 
-const typeDefs = [IntakeFormInput, IntakeFormTypes, ...formattedEnums];
+const typeDefs = [...IntakeFormInput, ...IntakeFormTypes, ...formattedEnums];
 
-export default mergeTypes(typeDefs, { all: true });
+export default mergeTypeDefs(typeDefs, { all: true });
