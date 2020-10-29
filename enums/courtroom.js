@@ -1,0 +1,15 @@
+export default {
+  _3E: { toString: () => '3E' },
+  _4E: { toString: () => '4E' },
+  _4G: { toString: () => '4G' },
+  _5E: { toString: () => '5E' },
+  _6F: { toString: () => '6F' },
+  _6H: { toString: () => '6H' },
+  ADULT: { toString: () => 'Adult' },
+  DIVERSION: { toString: () => 'Diversion' },
+  INTAKE_CONFERENCE: { toString: () => 'Intake Conference' },
+  CALL_IN: { toString: () => 'Call-In' },
+  JTC: { toString: () => 'JTC' },
+  PJJSC: { toString: () => 'PJJSC' },
+  WRAP: { toString: () => 'WRAP' },
+};

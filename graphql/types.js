@@ -7,7 +7,7 @@ import IntakeFormInput from './forms/intake-form/input';
 
 const formattedEnums = Object.keys(enums).map(
   key => `enum ${key} {
-    ${enums[key].map(val => `${val} `)}
+    ${Object.keys(enums[key]).map(val => `${val} `)}
   }`
 );
 
