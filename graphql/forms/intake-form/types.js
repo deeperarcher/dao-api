@@ -22,6 +22,8 @@ const IntakeForm = `
     address1: String
     address2: String
     zip: String
+    school: String
+    grade: String
 
     guardian1FirstName: String
     guardian1LastName: String
@@ -34,19 +36,58 @@ const IntakeForm = `
     incidentDate: String
     isIncidentTimeKnown:  Boolean 
     incidentAddress: String
+    incidentZip: String,
+    incidentDistrict: String
+    incidentType: IncidentType
+    victimFirstName: String
+    victimLastName: String
 
+    DCNum: String
+    SID: String
     arrestDate: String
-    timeOfDAReferral: String
     arrestingDistrict: Int
-    officers: [Int]
+    referralDate: String
+    isGunCase: Boolean
+    isGunInvolvedArrest: Boolean
+    officers: [String]
+    isDirectFiled: Boolean
 
     petitions: [IntakeFormPetition]
+
+    DA: String
+    notes: String
+    diagnoses: Diagnosis
+    traumaTypes: TraumaType
+    treatments: Treatment
+    callInDate: String
+    wasDRAIAdministered: Boolean
+    DRAIScore: Int
+    DRAIAction: String
+    callInHoldFacility: String
+    callInOverrideHoldReasons: [String]
+    intakeConferenceDate: String
+    intakeConferenceType: String
+    intakeConferenceOutcome: String
+    DHSStatusAtArrest: String
+
+    supervisions: [IntakeFormSupervision]
+    conditions: [IntakeFormCondition]
+
+    diversionType: String
+    diversionReferralDate: String
+    diversionReferralSource: String
+    YAPPanelDistrict: String
+    ReasonsNoDiversion: [String]
+    initialHearingDate: String
+    initialHearingLocation: Courtroom
 }`;
 
 const IntakeFormPetition = `
   type IntakeFormPetition {
-    petitionNumber: Int
+    petitionNum: Int
     dateFiled: String
+    isTransferFromOtherCounty: Boolean
+    legalStatus: LegalStatus
     charges: [PetitionCharge]
   }
 `;
@@ -54,13 +95,33 @@ const IntakeFormPetition = `
 const PetitionCharge = `
   type PetitionCharge {
     code: String
-    grade: String
+    name: String
+    isLead: Boolean
+    grade: ChargeGrade
+    category: ChargeCategory
+  }
+`;
+
+const IntakeFormSupervision = `
+  type IntakeFormSupervision {
+    supervisionType: SupervisionType
+    agency: String
+    reasons: [String]
+  }
+`;
+
+const IntakeFormCondition = `
+  type IntakeFormCondition {
+    conditionType: String
+    provider: String
   }
 `;
 
 export default [
   IntakeForm,
+  IntakeFormCondition,
   IntakeFormPetition,
+  IntakeFormSupervision,
   Mutation,
   PetitionCharge,
   Query,
