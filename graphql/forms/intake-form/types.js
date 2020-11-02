@@ -15,8 +15,8 @@ const IntakeForm = `
     firstName: String
     lastName: String
     dateOfBirth: String
-    sex: Sex
-    race: Race
+    sex: String
+    race: String
     isLatino: Boolean
     phoneNumber: String
     address1: String
@@ -27,18 +27,18 @@ const IntakeForm = `
 
     guardian1FirstName: String
     guardian1LastName: String
-    guardian1Relation: Relation
+    guardian1Relation: String
 
     guardian2FirstName: String
     guardian2LastName: String
-    guardian2Relation: Relation
+    guardian2Relation: String
 
     incidentDate: String
     isIncidentTimeKnown:  Boolean 
     incidentAddress: String
     incidentZip: String,
     incidentDistrict: String
-    incidentType: IncidentType
+    incidentType: String
     victimFirstName: String
     victimLastName: String
 
@@ -56,9 +56,9 @@ const IntakeForm = `
 
     DA: String
     notes: String
-    diagnoses: Diagnosis
-    traumaTypes: TraumaType
-    treatments: Treatment
+    diagnoses: String
+    traumaTypes: String
+    treatments: String
     callInDate: String
     wasDRAIAdministered: Boolean
     DRAIScore: Int
@@ -79,7 +79,7 @@ const IntakeForm = `
     YAPPanelDistrict: String
     ReasonsNoDiversion: [String]
     initialHearingDate: String
-    initialHearingLocation: Courtroom
+    initialHearingLocation: String
 }`;
 
 const IntakeFormPetition = `
@@ -87,7 +87,7 @@ const IntakeFormPetition = `
     petitionNum: Int
     dateFiled: String
     isTransferFromOtherCounty: Boolean
-    legalStatus: LegalStatus
+    legalStatus: String
     charges: [PetitionCharge]
   }
 `;
@@ -97,15 +97,15 @@ const PetitionCharge = `
     code: String
     name: String
     isLead: Boolean
-    grade: ChargeGrade
-    category: ChargeCategory
+    grade: String
+    category: String
   }
 `;
 
 const IntakeFormSupervision = `
   type IntakeFormSupervision {
-    supervisionType: SupervisionType
-    agency: String
+    supervisionType: String
+    provider: String
     reasons: [String]
   }
 `;

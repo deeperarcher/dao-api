@@ -4,8 +4,8 @@ const IntakeFormInput = `
     firstName: String
     lastName: String
     dateOfBirth: String
-    sex: Sex
-    race: Race
+    sex: String
+    race: String
     isLatino: Boolean
     phoneNumber: String
     address1: String
@@ -45,9 +45,4 @@ const PetitionChargeInput = `
     grade: String
   }`;
 
-
-export default [
-  IntakeFormInput,
-  PetitionChargeInput,
-  PetitionInput,
-];
+export default [IntakeFormInput, PetitionChargeInput, PetitionInput];

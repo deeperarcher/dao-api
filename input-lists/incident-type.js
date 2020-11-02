@@ -11,7 +11,9 @@ export default {
   HOME_SISTER: { toString: () => 'Home - Sister' },
   SCHHOL_OTHER: { toString: () => 'School - Other' },
   SCHHOL_OTHER_STUDENT: { toString: () => 'School - Other Student' },
-  SCHHOL_POLICE_CLIMATE_STAFF: { toString: () => 'School - Police/Climate Staff' },
+  SCHHOL_POLICE_CLIMATE_STAFF: {
+    toString: () => 'School - Police/Climate Staff',
+  },
   SCHHOL_PROPERTY: { toString: () => 'School - Property' },
   SCHHOL_TEACHING_STAFF: { toString: () => 'School - Teaching Staff' },
   SCHHOL_TERRORISTIC_THREAT: { toString: () => 'School - Terroristic Threat' },

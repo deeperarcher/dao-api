@@ -13,8 +13,8 @@ const IntakeFormSchema = new Schema({
   firstName: { required: true, type: String },
   lastName: { required: true, type: String },
   dateOfBirth: { required: true, type: Date },
-  sex: { enum: enums.Sex.keys, type: String },
-  race: { enum: enums.Race.keys, type: String },
+  sex: String,
+  race: String,
   isLatino: Boolean,
   phoneNumber: Number,
   address1: String,
@@ -25,11 +25,11 @@ const IntakeFormSchema = new Schema({
 
   guardian1FirstName: String,
   guardian1LastName: String,
-  guardian1Relation: { enum: enums.Relation.keys, type: String },
+  guardian1Relation: String,
 
   guardian2FirstName: String,
   guardian2LastName: String,
-  guardian2Relation: { enum: enums.Relation.keys, type: String },
+  guardian2Relation: String,
 
   // INCIDENT
   incidentDate: Date,
@@ -37,7 +37,7 @@ const IntakeFormSchema = new Schema({
   incidentAddress: String,
   incidentZip: String,
   incidentDistrict: String,
-  incidentType: { enum: enums.IncidentType.keys, type: String },
+  incidentType: String,
   victimFirstName: String,
   victimLastName: String,
 
@@ -58,14 +58,14 @@ const IntakeFormSchema = new Schema({
       petitionNum: Number,
       dateFiled: Date,
       isTransferFromOtherCounty: Boolean,
-      legalStatus: { enum: enums.LegalStatus.keys, type: String },
+      legalStatus: String,
       charges: [
         {
           code: String,
           name: String,
           isLead: Boolean,
-          grade: { enum: enums.ChargeGrade.keys, type: String },
-          category: { enum: enums.ChargeCategory.keys, type: String },
+          grade: String,
+          category: String,
         },
       ],
     },
@@ -75,28 +75,28 @@ const IntakeFormSchema = new Schema({
   notes: String,
 
   // EVALUATION
-  diagnoses: [{ enum: enums.Diagnosis.keys, type: String }],
-  traumaTypes: [{ enum: enums.TraumaType.keys, type: String }],
-  treatments: [{ enum: enums.Treatment.keys, type: String }],
+  diagnoses: [String],
+  traumaTypes: [String],
+  treatments: [String],
 
   // CALL-IN
   callInDate: Date,
   wasDRAIAdministered: Boolean,
   DRAIScore: Number,
-  DRAIAction: String, // TODO enum
-  callInHoldFacility: String, // TODO enum
-  callInOverrideHoldReasons: [String], // TODO enum
+  DRAIAction: String,
+  callInHoldFacility: String,
+  callInOverrideHoldReasons: [String],
 
   // INTAKE CONFERENCE
   intakeConferenceDate: Date,
-  intakeConferenceType: String, // TODO enum
-  intakeConferenceOutcome: String, // TODO enum
-  DHSStatusAtArrest: String, // TODO enum
+  intakeConferenceType: String,
+  intakeConferenceOutcome: String,
+  DHSStatusAtArrest: String,
 
   supervisions: [
     {
-      supervisionType: { enum: enums.SupervisionType.key, type: String },
-      agency: String, // TODO enum
+      supervisionType: String,
+      provider: String,
       reasons: [String], // TODO
     },
   ],
@@ -110,10 +110,9 @@ const IntakeFormSchema = new Schema({
   YAPPanelDistrict: String,
   ReasonsNoDiversion: [String],
 
-
   // NEXT HEARING
   initialHearingDate: String,
-  initialHearingLocation: { enum: enums.Courtroom.keys, type: String },
+  initialHearingLocation: String,
 });
 
 export default mongoose.model('IntakeForm', IntakeFormSchema);

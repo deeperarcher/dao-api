@@ -42,7 +42,7 @@ const intakeFormQuery = `
       ${apiProps}
     }
   }
-`
+`;
 
 const insertIntakeForm = `
   mutation {
@@ -53,7 +53,7 @@ const insertIntakeForm = `
         lastName: "Mylast"
         dateOfBirth: "10/21/1989"
         sex: MALE
-        race: AFRICAN_AMERICAN
+        race: "African American"
         isLatino: false
         phoneNumber: "7703620427"
         address1: "MyAddr1"
@@ -61,10 +61,10 @@ const insertIntakeForm = `
         zip: "123123-123"
         guardian1FirstName: "MyGuard1F"
         guardian1LastName: "MyGuard1L"
-        guardian1Relation: MOTHER
+        guardian1Relation: "Mother"
         guardian2FirstName: "MyGuard2F"
         guardian2LastName: "MyGuard2L"
-        guardian2Relation: FATHER
+        guardian2Relation: "Father"
         incidentDate: "10202020"
         isIncidentTimeKnown: true
         incidentAddress: "124 Streetsville Rd."
@@ -81,4 +81,4 @@ const insertIntakeForm = `
       ${apiProps}
     }
   }
-`
+`;
