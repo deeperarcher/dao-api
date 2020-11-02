@@ -7,13 +7,15 @@ const apiProps = `
   race
   isLatino
   phoneNumber
-  address1
-  address2
+  address
   zip
+  school
+  grade
 
   guardian1FirstName
   guardian1LastName
   guardian1Relation
+
   guardian2FirstName
   guardian2LastName
   guardian2Relation
@@ -21,19 +23,77 @@ const apiProps = `
   incidentDate
   isIncidentTimeKnown
   incidentAddress
-  arrestDate
-  timeOfDAReferral
-  arrestingDistrict
+  incidentZip
+  incidentDistrict
+  incidentType
+  victimFirstName
+  victimLastName
 
+  DCNum
+  SID
+  arrestDate
+  arrestingDistrict
+  referralDate
+  isGunCase
+  isGunInvolvedArrest
   officers
-  petitions {
-    petitionNumber
+  isDirectFiled
+
+  
+
+  DA
+  notes
+
+  diagnoses
+  traumaTypes
+  treatments
+  
+  callInDate
+  wasDRAIAdministered
+  DRAIScore
+  DRAIAction
+  callInHoldFacility
+  callInOverrideHoldReasons
+  
+  intakeConferenceDate
+  intakeConferenceType
+  intakeConferenceOutcome
+  DHSStatusAtArrest
+
+  diversionType
+  diversionReferralDate
+  diversionReferralSource
+  YAPPanelDistrict
+  ReasonsNoDiversion
+  
+  initialHearingDate
+  initialHearingLocation
+
+  supervisions: [{
+    supervisionType
+    provider
+    reasons
+  }]
+
+  conditions: [{
+    conditionType
+    provider
+    reasons
+  }]
+
+  petitions: [{
+    petitionNum
     dateFiled
-    charges {
+    isTransferFromOtherCounty
+    legalStatus
+    charges: [{
       code
+      name
+      isLead
       grade
-    }
-  }
+      category
+    }]
+  }]
 `;
 
 const intakeFormQuery = `
@@ -51,31 +111,121 @@ const insertIntakeForm = `
         PID: 1
         firstName: "Myfirst"
         lastName: "Mylast"
-        dateOfBirth: "10/21/1989"
-        sex: MALE
+        dateOfBirth: "2002-10-21"
+        sex: "Male"
         race: "African American"
         isLatino: false
         phoneNumber: "7703620427"
-        address1: "MyAddr1"
-        address2: "MyAddr2"
+        address: "MyAddr1"
         zip: "123123-123"
+        school: "South Philadelphia HS"
+        grade: "12"
+
         guardian1FirstName: "MyGuard1F"
         guardian1LastName: "MyGuard1L"
         guardian1Relation: "Mother"
+
         guardian2FirstName: "MyGuard2F"
         guardian2LastName: "MyGuard2L"
         guardian2Relation: "Father"
-        incidentDate: "10202020"
+
+        incidentDate: "2020-10-22"
         isIncidentTimeKnown: true
         incidentAddress: "124 Streetsville Rd."
-        arrestDate: "10212020"
-        referralDate: "10222020"
-        arrestingDistrict: 13
-        officers: ["1231231", "44241241"]
+        incidentZip: "19148-1234"
+        incidentDistrict: "12"
+        incidentType: "School"
+        victimFirstName: "Michael"
+        victimLastName: "Tyson"
+    
+        DCNum: "1245641-12"
+        SID: "1245511"
+        arrestDate: "2020-10-22T08:13:00.000Z"
+        arrestingDistrict: "13"
+        referralDate: "2020-10-22T15:34:00.000Z"
+        isGunCase: true
+        isGunInvolvedArrest: true
+        officers: ["12452415", "15623452"]
+        isDirectFiled: false
+
+        DA: "Sternamin"
+        notes: "test note"
+
+        diagnoses: []
+        traumaTypes: []
+        treatments: []
+
+        callInDate: "2020-11-02"
+        wasDRAIAdministered: true
+        DRAIScore: 18
+        DRAIAction: "Release"
+        callInHoldFacility: "PJJSC"
+        callInOverrideHoldReasons: ["N/A"]
+
+        intakeConferenceDate: "2020-11-02"
+        intakeConferenceType: "Probation"
+        intakeConferenceOutcome: "Release to Diversion"
+        DHSStatusAtArrest: "Inactive"
+
+        supervisions: [{
+          supervisionType: "ERC"
+          provider: "NET"
+          reasons: ["Drai Score"]
+        }]
+
+        diversionType: "Pre-trial"
+        diversionReferralDate: "2020-11-03"
+        diversionReferralSource: "Intake Conference"
+        YAPPanelDistrict: "12"
+        ReasonsNoDiversion: ["N/A"]
+        
+        initialHearingDate: "2020-11-05"
+        initialHearingLocation: "3E"
         petitions: [
-          { petitionNumber: "1", dateFiled: "10212020" charges: [{ code: "13-acb", grade: "F1" }, { code: "85-ahos", grade: "F2" }] },
-          { petitionNumber: "2", dateFiled: "10212020" charges: [{ code: "51512kjb", grade: "F" }, { code: "191b91d", grade: "M" }] }
+          { 
+            petitionNum: "1742561"
+            dateFiled: "2020-10-22"
+            isTransferFromOtherCounty: false
+            charges: [
+              { 
+                code: "13-acb"
+                name: "Aggravated Assault"
+                isLead: true
+                grade: "F1"
+                category: "Assault"
+              }, 
+              { 
+                code: "85-ahos"
+                name: "Theft by Taking"
+                isLead: false
+                grade: "F2"
+                category: "Property"
+              }
+            ] 
+          },
+          { 
+            petitionNum: "2164655", 
+            dateFiled: "2020-10-22" 
+            isTransferFromOtherCounty: false
+            charges: [
+              { 
+                code: "16-peiw"
+                name: "Possession of Controlled Substance"
+                isLead: true
+                grade: "F"
+                category: "Drug"
+              }, 
+              { 
+                code: "85-ahos"
+                name: "Possession of Drug Paraphernalia"
+                isLead: false
+                grade: "M"
+                category: "Drug"
+              }
+            ] 
+          }
         ]
+
       }
     ) {
       ${apiProps}

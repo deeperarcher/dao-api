@@ -19,8 +19,7 @@ const IntakeForm = `
     race: String
     isLatino: Boolean
     phoneNumber: String
-    address1: String
-    address2: String
+    address: String
     zip: String
     school: String
     grade: String
@@ -45,7 +44,7 @@ const IntakeForm = `
     DCNum: String
     SID: String
     arrestDate: String
-    arrestingDistrict: Int
+    arrestingDistrict: String
     referralDate: String
     isGunCase: Boolean
     isGunInvolvedArrest: Boolean
@@ -56,15 +55,18 @@ const IntakeForm = `
 
     DA: String
     notes: String
-    diagnoses: String
-    traumaTypes: String
-    treatments: String
+
+    diagnoses: [String]
+    traumaTypes: [String]
+    treatments: [String]
+    
     callInDate: String
     wasDRAIAdministered: Boolean
     DRAIScore: Int
     DRAIAction: String
     callInHoldFacility: String
     callInOverrideHoldReasons: [String]
+    
     intakeConferenceDate: String
     intakeConferenceType: String
     intakeConferenceOutcome: String
@@ -78,13 +80,14 @@ const IntakeForm = `
     diversionReferralSource: String
     YAPPanelDistrict: String
     ReasonsNoDiversion: [String]
+
     initialHearingDate: String
     initialHearingLocation: String
 }`;
 
 const IntakeFormPetition = `
   type IntakeFormPetition {
-    petitionNum: Int
+    petitionNum: String
     dateFiled: String
     isTransferFromOtherCounty: Boolean
     legalStatus: String
@@ -114,6 +117,7 @@ const IntakeFormCondition = `
   type IntakeFormCondition {
     conditionType: String
     provider: String
+    reasons: [String]
   }
 `;
 

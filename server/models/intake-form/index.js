@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import { ObjectID } from 'mongodb';
-import enums from '../../../enums';
 const Schema = mongoose.Schema;
 
 ObjectID.prototype.valueOf = function () {
@@ -17,8 +16,7 @@ const IntakeFormSchema = new Schema({
   race: String,
   isLatino: Boolean,
   phoneNumber: Number,
-  address1: String,
-  address2: String,
+  address: String,
   zip: String,
   school: String,
   grade: String,
@@ -45,7 +43,7 @@ const IntakeFormSchema = new Schema({
   DCNum: String,
   SID: String,
   arrestDate: Date,
-  arrestingDistrict: Number,
+  arrestingDistrict: String,
   referralDate: Date,
   isGunCase: Boolean,
   isGunInvolvedArrest: Boolean,
@@ -97,11 +95,17 @@ const IntakeFormSchema = new Schema({
     {
       supervisionType: String,
       provider: String,
-      reasons: [String], // TODO
+      reasons: [String],
     },
   ],
 
-  conditions: [{ conditionType: String, provider: String }],
+  conditions: [
+    {
+      conditionType: String,
+      provider: String,
+      reasons: [String],
+    },
+  ],
 
   // DIVERSION
   diversionType: String,
