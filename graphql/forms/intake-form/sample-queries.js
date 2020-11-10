@@ -69,31 +69,29 @@ const apiProps = `
   initialHearingDate
   initialHearingLocation
 
-  supervisions: [{
-    supervisionType
+  courtOrderEvents {
+    chargeIDs
+    order
+    isSupervision
     provider
+    eventType
     reasons
-  }]
+  }
 
-  conditions: [{
-    conditionType
-    provider
-    reasons
-  }]
 
-  petitions: [{
+  petitions {
     petitionNum
     dateFiled
     isTransferFromOtherCounty
     legalStatus
-    charges: [{
+    charges {
       code
       name
       isLead
       grade
       category
-    }]
-  }]
+    }
+  }
 `;
 
 const intakeFormQuery = `
@@ -167,10 +165,18 @@ const insertIntakeForm = `
         intakeConferenceOutcome: "Release to Diversion"
         DHSStatusAtArrest: "Inactive"
 
-        supervisions: [{
-          supervisionType: "ERC"
+        courtOrderEvents: [{
+          chargeIDs: [
+            "1742561-13-acb", 
+            "1742561-85-ahos", 
+            "2164655-16-peiw", 
+            "2164655-80-afef"
+          ]
+          order: "ERC"
+          isSupervision: true
           provider: "NET"
-          reasons: ["Drai Score"]
+          eventType: "ORDER"
+          reasons: ["DRAI Score"]
         }]
 
         diversionType: "Pre-trial"
@@ -216,7 +222,7 @@ const insertIntakeForm = `
                 category: "Drug"
               }, 
               { 
-                code: "85-ahos"
+                code: "80-afef"
                 name: "Possession of Drug Paraphernalia"
                 isLead: false
                 grade: "M"

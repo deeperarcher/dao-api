@@ -91,18 +91,13 @@ const IntakeFormSchema = new Schema({
   intakeConferenceOutcome: String,
   DHSStatusAtArrest: String,
 
-  supervisions: [
+  courtOrderEvents: [
     {
-      supervisionType: String,
+      chargeIDs: [String],
+      order: String,
+      isSupervision: Boolean,
       provider: String,
-      reasons: [String],
-    },
-  ],
-
-  conditions: [
-    {
-      conditionType: String,
-      provider: String,
+      eventType: String,
       reasons: [String],
     },
   ],

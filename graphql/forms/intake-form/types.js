@@ -72,8 +72,7 @@ const IntakeForm = `
     intakeConferenceOutcome: String
     DHSStatusAtArrest: String
 
-    supervisions: [IntakeFormSupervision]
-    conditions: [IntakeFormCondition]
+    courtOrderEvents: [CourtOrderEvent]
 
     diversionType: String
     diversionReferralDate: String
@@ -105,27 +104,21 @@ const PetitionCharge = `
   }
 `;
 
-const IntakeFormSupervision = `
-  type IntakeFormSupervision {
-    supervisionType: String
+const CourtOrderEvent = `
+  type CourtOrderEvent {
+    chargeIDs: [String]
+    order: String
+    isSupervision: Boolean
     provider: String
-    reasons: [String]
-  }
-`;
-
-const IntakeFormCondition = `
-  type IntakeFormCondition {
-    conditionType: String
-    provider: String
+    eventType: String
     reasons: [String]
   }
 `;
 
 export default [
+  CourtOrderEvent,
   IntakeForm,
-  IntakeFormCondition,
   IntakeFormPetition,
-  IntakeFormSupervision,
   Mutation,
   PetitionCharge,
   Query,

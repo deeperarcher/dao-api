@@ -61,8 +61,7 @@ const IntakeFormInput = `
     intakeConferenceOutcome: String
     DHSStatusAtArrest: String
 
-    supervisions: [SupervisionInput]
-    conditions: [ConditionInput]
+    courtOrderEvents: [CourtOrderEventInput]
 
     diversionType: String
     diversionReferralDate: String
@@ -92,25 +91,19 @@ const PetitionChargeInput = `
     category: String
   }`;
 
-const SupervisionInput = `
-  input SupervisionInput {
-    supervisionType: String
+const CourtOrderEventInput = `
+  input CourtOrderEventInput {
+    chargeIDs: [String]
+    order: String
+    isSupervision: Boolean
     provider: String
+    eventType: String
     reasons: [String]
   }`;
 
-const ConditionInput = `
-  input ConditionInput {
-    conditionType: String
-    provider: String
-    reasons: [String]
-  }
-`;
-
 export default [
-  ConditionInput,
+  CourtOrderEventInput,
   IntakeFormInput,
   PetitionChargeInput,
   PetitionInput,
-  SupervisionInput,
 ];
