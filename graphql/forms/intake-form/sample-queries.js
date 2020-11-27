@@ -102,8 +102,8 @@ const intakeFormQuery = `
   }
 `;
 
-const insertIntakeForm = `
-  mutation {
+export const insertIntakeForm = `
+   mutation {
     insertIntakeForm(
       input: {
         PID: 1

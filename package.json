@@ -6,7 +6,8 @@
   "scripts": {
     "format": "prettier --write \"**/*.js\"",
     "start": "npm run server",
-    "server": "nodemon --exec babel-node server/index.js"
+    "server": "nodemon --exec babel-node server/index.js",
+    "test": "jest --watch"
   },
   "author": "Alan Lee <alanjlee89@gmail.com>",
   "devDependencies": {
@@ -14,11 +15,19 @@
     "@babel/core": "^7.11.6",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.5",
-    "prettier": "^2.1.2"
+    "@shelf/jest-mongodb": "^1.2.3",
+    "apollo-server-testing": "^2.19.0",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3",
+    "prettier": "^2.1.2",
+    "regenerator-runtime": "^0.13.7"
   },
   "dependencies": {
+    "apollo-server-express": "^2.19.0",
+    "babel-jest": "^26.6.3",
     "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "graphql": "^15.3.0",
     "graphql-tools": "^6.2.3",
     "graphql-yoga": "^1.18.3",

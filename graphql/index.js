@@ -8,4 +8,5 @@ const schema = makeExecutableSchema({
   resolvers,
 });
 
+export { typeDefs, resolvers };
 export default schema;
