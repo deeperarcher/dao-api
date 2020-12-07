@@ -24,7 +24,7 @@ const IntakeFormInput = `
     incidentDate: String
     isIncidentTimeKnown:  Boolean 
     incidentAddress: String
-    incidentZip: String,
+    incidentZip: String
     incidentDistrict: String
     incidentType: String
     victimFirstName: String
@@ -75,29 +75,28 @@ const IntakeFormInput = `
 
 const PetitionInput = `
   input PetitionInput {
-    petitionNum: String
+    charges: [PetitionChargeInput]
     dateFiled: String
     isTransferFromOtherCounty: Boolean
-    legalStatus: String
-    charges: [PetitionChargeInput]
+    petitionNum: String
   }`;
 
 const PetitionChargeInput = `
   input PetitionChargeInput {
-    code: String
-    name: String
-    isLead: Boolean
-    grade: String
     category: String
+    code: String
+    grade: String
+    isLead: Boolean
+    name: String
   }`;
 
 const CourtOrderEventInput = `
   input CourtOrderEventInput {
     chargeIDs: [String]
-    order: String
-    isSupervision: Boolean
-    provider: String
     eventType: String
+    isSupervision: Boolean
+    order: String
+    provider: String
     reasons: [String]
   }`;
 

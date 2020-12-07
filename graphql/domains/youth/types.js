@@ -1,13 +1,21 @@
 const Youth = `
-type Youth {
-  PID: Int
-  firstName: [String]
-  lastName: [String]
-  dateOfBirth: [String]
-  incidents: [IncidentType]
-  arrests: [arrestType]
-  petitions: [PetitionType]
-}
+  type Youth {
+    arrests: [Arrest!]!
+    courtOrderEvents: [CourtOrderEvent]!
+    dateOfBirth: String!
+    firstName: String!
+    incidents: [Incident!]!
+    lastName: String!
+    petitions: [Petition!]!
+    PID: Int!
+  }
 `;
 
-export default [Youth];
+const Query = `
+  type Query {
+    youth(PID: Int!): Youth!
+    youths: [Youth]!
+  }
+`;
+
+export default [Youth, Query];
