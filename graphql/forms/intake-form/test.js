@@ -1,13 +1,26 @@
 import { createTestClient } from 'apollo-server-testing';
-import { insertIntakeForm } from './sample-queries';
+import { insertIntakeForm, intakeFormQuery } from './sample-queries';
 import createServer from '../../../server/create-graphql-server';
 
-describe('createIntakeForm', () => {
+import { sampleForm } from './sample-queries';
+
+describe('mutation insertIntakeForm', () => {
   it('should create an intake form', async () => {
     const mutation = insertIntakeForm;
     const { mutate } = createTestClient(createServer());
-    const response = await mutate({ mutation });
+    const { data, errors } = await mutate({ mutation });
 
-    expect(response).toEqual('The whole intakeForm back');
+    expect(errors).toEqual(undefined);
+    expect(data.insertIntakeForm).toEqual(sampleForm);
+  });
+});
+
+describe('query intakeForms', () => {
+  it('should return all intake forms', async () => {
+    const { query } = createTestClient(createServer());
+    const { data, errors } = await query({ query: intakeFormQuery });
+
+    expect(errors).toEqual(undefined);
+    expect(data.intakeForms).toEqual([sampleForm]);
   });
 });

@@ -1,3 +1,5 @@
+import util from 'util';
+
 const apiProps = `
   PID
   firstName
@@ -37,9 +39,6 @@ const apiProps = `
   isGunCase
   isGunInvolvedArrest
   officers
-  isDirectFiled
-
-  
 
   DA
   notes
@@ -70,7 +69,7 @@ const apiProps = `
   initialHearingLocation
 
   courtOrderEvents {
-    chargeIDs
+    petitionNumbers
     order
     isSupervision
     provider
@@ -78,12 +77,12 @@ const apiProps = `
     reasons
   }
 
-
   petitions {
-    petitionNum
+    petitionNumber
     dateFiled
+    isDirectFiled
+    isDiverted
     isTransferFromOtherCounty
-    legalStatus
     charges {
       code
       name
@@ -94,7 +93,135 @@ const apiProps = `
   }
 `;
 
-const intakeFormQuery = `
+export const sampleForm = {
+  PID: 1,
+  firstName: 'Myfirst',
+  lastName: 'Mylast',
+  dateOfBirth: '1035158400000',
+  sex: 'Male',
+  race: 'African American',
+  isLatino: false,
+  phoneNumber: '7703620427',
+  address: 'MyAddr1',
+  zip: '123123-123',
+  school: 'South Philadelphia HS',
+  grade: '12',
+
+  guardian1FirstName: 'MyGuard1F',
+  guardian1LastName: 'MyGuard1L',
+  guardian1Relation: 'Mother',
+
+  guardian2FirstName: 'MyGuard2F',
+  guardian2LastName: 'MyGuard2L',
+  guardian2Relation: 'Father',
+
+  incidentDate: '1603324800000',
+  isIncidentTimeKnown: true,
+  incidentAddress: '124 Streetsville Rd.',
+  incidentZip: '19148-1234',
+  incidentDistrict: '12',
+  incidentType: 'School',
+  victimFirstName: 'Michael',
+  victimLastName: 'Tyson',
+
+  DCNum: '1245641-12',
+  SID: '1245511',
+  arrestDate: '1603354380000',
+  arrestingDistrict: '13',
+  referralDate: '1603380840000',
+  isGunCase: true,
+  isGunInvolvedArrest: true,
+  officers: ['12452415', '15623452'],
+
+  DA: 'Sternamin',
+  notes: 'test note',
+
+  diagnoses: [],
+  traumaTypes: [],
+  treatments: [],
+
+  callInDate: '1604275200000',
+  wasDRAIAdministered: true,
+  DRAIScore: 18,
+  DRAIAction: 'Release',
+  callInHoldFacility: 'PJJSC',
+  callInOverrideHoldReasons: ['N/A'],
+
+  intakeConferenceDate: '1604275200000',
+  intakeConferenceType: 'Probation',
+  intakeConferenceOutcome: 'Release to Diversion',
+  DHSStatusAtArrest: 'Inactive',
+
+  diversionType: 'Pre-trial',
+  diversionReferralDate: '1604361600000',
+  diversionReferralSource: 'Intake Conference',
+  YAPPanelDistrict: '12',
+  ReasonsNoDiversion: ['N/A'],
+
+  initialHearingDate: '2020-11-05',
+  initialHearingLocation: '3E',
+
+  petitions: [
+    {
+      charges: [
+        {
+          category: 'Assault',
+          code: '13-acb',
+          grade: 'F1',
+          isLead: true,
+          name: 'Aggravated Assault',
+        },
+        {
+          category: 'Property',
+          code: '85-ahos',
+          grade: 'F2',
+          isLead: false,
+          name: 'Theft by Taking',
+        },
+      ],
+      dateFiled: '1603324800000',
+      isDirectFiled: false,
+      isDiverted: true,
+      isTransferFromOtherCounty: false,
+      petitionNumber: '1742561',
+    },
+    {
+      charges: [
+        {
+          category: 'Drug',
+          code: '16-peiw',
+          grade: 'F',
+          isLead: true,
+          name: 'Possession of Controlled Substance',
+        },
+        {
+          category: 'Drug',
+          code: '80-afef',
+          grade: 'M',
+          isLead: false,
+          name: 'Possession of Drug Paraphernalia',
+        },
+      ],
+      dateFiled: '1603324800000',
+      isDirectFiled: true,
+      isDiverted: false,
+      isTransferFromOtherCounty: false,
+      petitionNumber: '2164655',
+    },
+  ],
+  courtOrderEvents: [
+    {
+      petitionNumbers: ['1742561', '2164655'],
+      eventType: 'ORDERED',
+      isSupervision: true,
+      order: 'ERC',
+      provider: 'NET',
+      reasons: ['DRAI Score'],
+    },
+  ],
+};
+
+export const intakeFormQuery = `
   query {
     intakeForms {
       ${apiProps}
@@ -105,134 +232,7 @@ const intakeFormQuery = `
 export const insertIntakeForm = `
    mutation {
     insertIntakeForm(
-      input: {
-        PID: 1
-        firstName: "Myfirst"
-        lastName: "Mylast"
-        dateOfBirth: "2002-10-21"
-        sex: "Male"
-        race: "African American"
-        isLatino: false
-        phoneNumber: "7703620427"
-        address: "MyAddr1"
-        zip: "123123-123"
-        school: "South Philadelphia HS"
-        grade: "12"
-
-        guardian1FirstName: "MyGuard1F"
-        guardian1LastName: "MyGuard1L"
-        guardian1Relation: "Mother"
-
-        guardian2FirstName: "MyGuard2F"
-        guardian2LastName: "MyGuard2L"
-        guardian2Relation: "Father"
-
-        incidentDate: "2020-10-22"
-        isIncidentTimeKnown: true
-        incidentAddress: "124 Streetsville Rd."
-        incidentZip: "19148-1234"
-        incidentDistrict: "12"
-        incidentType: "School"
-        victimFirstName: "Michael"
-        victimLastName: "Tyson"
-    
-        DCNum: "1245641-12"
-        SID: "1245511"
-        arrestDate: "2020-10-22T08:13:00.000Z"
-        arrestingDistrict: "13"
-        referralDate: "2020-10-22T15:34:00.000Z"
-        isGunCase: true
-        isGunInvolvedArrest: true
-        officers: ["12452415", "15623452"]
-        isDirectFiled: false
-
-        DA: "Sternamin"
-        notes: "test note"
-
-        diagnoses: []
-        traumaTypes: []
-        treatments: []
-
-        callInDate: "2020-11-02"
-        wasDRAIAdministered: true
-        DRAIScore: 18
-        DRAIAction: "Release"
-        callInHoldFacility: "PJJSC"
-        callInOverrideHoldReasons: ["N/A"]
-
-        intakeConferenceDate: "2020-11-02"
-        intakeConferenceType: "Probation"
-        intakeConferenceOutcome: "Release to Diversion"
-        DHSStatusAtArrest: "Inactive"
-
-        courtOrderEvents: [{
-          chargeIDs: [
-            "1742561-13-acb", 
-            "1742561-85-ahos", 
-            "2164655-16-peiw", 
-            "2164655-80-afef"
-          ]
-          order: "ERC"
-          isSupervision: true
-          provider: "NET"
-          eventType: "ORDER"
-          reasons: ["DRAI Score"]
-        }]
-
-        diversionType: "Pre-trial"
-        diversionReferralDate: "2020-11-03"
-        diversionReferralSource: "Intake Conference"
-        YAPPanelDistrict: "12"
-        ReasonsNoDiversion: ["N/A"]
-        
-        initialHearingDate: "2020-11-05"
-        initialHearingLocation: "3E"
-        petitions: [
-          { 
-            petitionNum: "1742561"
-            dateFiled: "2020-10-22"
-            isTransferFromOtherCounty: false
-            charges: [
-              { 
-                code: "13-acb"
-                name: "Aggravated Assault"
-                isLead: true
-                grade: "F1"
-                category: "Assault"
-              }, 
-              { 
-                code: "85-ahos"
-                name: "Theft by Taking"
-                isLead: false
-                grade: "F2"
-                category: "Property"
-              }
-            ] 
-          },
-          { 
-            petitionNum: "2164655", 
-            dateFiled: "2020-10-22" 
-            isTransferFromOtherCounty: false
-            charges: [
-              { 
-                code: "16-peiw"
-                name: "Possession of Controlled Substance"
-                isLead: true
-                grade: "F"
-                category: "Drug"
-              }, 
-              { 
-                code: "80-afef"
-                name: "Possession of Drug Paraphernalia"
-                isLead: false
-                grade: "M"
-                category: "Drug"
-              }
-            ] 
-          }
-        ]
-
-      }
+      input: ${JSON.stringify(sampleForm).replace(/"([^"]+)":/g, '$1:')},
     ) {
       ${apiProps}
     }
