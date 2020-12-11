@@ -3,7 +3,6 @@ const Arrest = `
     arrestDate: String
     arrestingDistrict: String
     DCNum: String
-    isDirectFiled: Boolean
     isGunCase: Boolean
     isGunInvolvedArrest: Boolean
     officers: [String]

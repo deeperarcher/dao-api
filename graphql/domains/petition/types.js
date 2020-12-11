@@ -3,7 +3,6 @@ const LegalStatusEvent = `
     date: String!
     dischargeNature: String
     dischargeOutcome: String
-    petitionNumbers: [String!]!
     reasons: [String]
     status: String!
     type: String!
@@ -14,6 +13,8 @@ const Petition = `
   type Petition {
     charges: [PetitionCharge]
     dateFiled: String
+    isDirectFiled: Boolean
+    isDiverted: Boolean
     isTransferFromOtherCounty: Boolean
     legalStatusEvents: [LegalStatusEvent]!
     petitionNumber: String

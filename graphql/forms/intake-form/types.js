@@ -49,7 +49,6 @@ const IntakeForm = `
     isGunCase: Boolean
     isGunInvolvedArrest: Boolean
     officers: [String]
-    isDirectFiled: Boolean
 
     petitions: [IntakeFormPetition]
 
@@ -86,10 +85,11 @@ const IntakeForm = `
 
 const IntakeFormPetition = `
   type IntakeFormPetition {
-    petitionNum: String
+    petitionNumber: String
     dateFiled: String
+    isDirectFiled: Boolean
+    isDiverted: Boolean
     isTransferFromOtherCounty: Boolean
-    legalStatus: String
     charges: [PetitionCharge]
   }
 `;
@@ -106,7 +106,7 @@ const PetitionCharge = `
 
 const CourtOrderEvent = `
   type CourtOrderEvent {
-    chargeIDs: [String]
+    petitionNumbers: [String]
     order: String
     isSupervision: Boolean
     provider: String

@@ -38,7 +38,6 @@ const IntakeFormInput = `
     isGunCase: Boolean
     isGunInvolvedArrest: Boolean
     officers: [String]
-    isDirectFiled: Boolean
 
     petitions: [PetitionInput]
 
@@ -77,8 +76,10 @@ const PetitionInput = `
   input PetitionInput {
     charges: [PetitionChargeInput]
     dateFiled: String
+    isDirectFiled: Boolean
+    isDiverted: Boolean
     isTransferFromOtherCounty: Boolean
-    petitionNum: String
+    petitionNumber: String
   }`;
 
 const PetitionChargeInput = `
@@ -92,10 +93,10 @@ const PetitionChargeInput = `
 
 const CourtOrderEventInput = `
   input CourtOrderEventInput {
-    chargeIDs: [String]
     eventType: String
     isSupervision: Boolean
     order: String
+    petitionNumbers: [String]
     provider: String
     reasons: [String]
   }`;

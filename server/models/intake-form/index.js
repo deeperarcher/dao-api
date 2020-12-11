@@ -49,14 +49,13 @@ const IntakeFormSchema = new Schema({
   isGunInvolvedArrest: Boolean,
   officers: [String], //payroll#
 
-  isDirectFiled: Boolean,
-
   petitions: [
     {
-      petitionNum: Number,
+      petitionNumber: String,
       dateFiled: Date,
+      isDirectFiled: Boolean,
+      isDiverted: Boolean,
       isTransferFromOtherCounty: Boolean,
-      legalStatus: String,
       charges: [
         {
           code: String,
@@ -93,7 +92,7 @@ const IntakeFormSchema = new Schema({
 
   courtOrderEvents: [
     {
-      chargeIDs: [String],
+      petitionNumbers: [String],
       order: String,
       isSupervision: Boolean,
       provider: String,
