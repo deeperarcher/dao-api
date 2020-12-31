@@ -32,16 +32,8 @@ const IntakeForm = `
     guardian2LastName: String
     guardian2Relation: String
 
-    incidentDate: String
-    isIncidentTimeKnown:  Boolean 
-    incidentAddress: String
-    incidentZip: String,
-    incidentDistrict: String
-    incidentType: String
-    victimFirstName: String
-    victimLastName: String
+    incidents: [Incident!]!
 
-    DCNum: String
     SID: String
     arrestDate: String
     arrestingDistrict: String
@@ -50,7 +42,7 @@ const IntakeForm = `
     isGunInvolvedArrest: Boolean
     officers: [String]
 
-    petitions: [IntakeFormPetition]
+    petitions: [IntakeFormPetition!]!
 
     DA: String
     notes: String
@@ -85,12 +77,16 @@ const IntakeForm = `
 
 const IntakeFormPetition = `
   type IntakeFormPetition {
-    petitionNumber: String
-    dateFiled: String
+    petitionNumber: String!
+    DCNum: String
+    charges: [PetitionCharge!]!
+    dateFiled: String!
+    incidentID: String!
     isDirectFiled: Boolean
     isDiverted: Boolean
     isTransferFromOtherCounty: Boolean
-    charges: [PetitionCharge]
+    victimFirstName: String
+    victimLastName: String
   }
 `;
 

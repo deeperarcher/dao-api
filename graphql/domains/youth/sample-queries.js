@@ -5,18 +5,16 @@ const apiProps = `
   PID
   incidents {
     incidentDate
+    incidentID
     isIncidentTimeKnown
     incidentAddress
     incidentZip
     incidentDistrict
     incidentType
-    victimFirstName
-    victimLastName
   }
   arrests {
     arrestDate
     arrestingDistrict
-    DCNum
     isGunCase
     isGunInvolvedArrest
     officers
@@ -27,9 +25,13 @@ const apiProps = `
   petitions {
     petitionNumber
     dateFiled
+    DCNum
+    incidentID
     isDirectFiled
     isDiverted
     isTransferFromOtherCounty
+    victimFirstName
+    victimLastName
     charges {
       code
       name

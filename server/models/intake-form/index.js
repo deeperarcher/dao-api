@@ -29,18 +29,19 @@ const IntakeFormSchema = new Schema({
   guardian2LastName: String,
   guardian2Relation: String,
 
-  // INCIDENT
-  incidentDate: Date,
-  isIncidentTimeKnown: { required: true, type: Boolean },
-  incidentAddress: String,
-  incidentZip: String,
-  incidentDistrict: String,
-  incidentType: String,
-  victimFirstName: String,
-  victimLastName: String,
+  incidents: [
+    {
+      incidentID: { required: true, type: String },
+      incidentDate: Date,
+      isIncidentTimeKnown: { required: true, type: Boolean },
+      incidentAddress: String,
+      incidentZip: String,
+      incidentDistrict: String,
+      incidentType: { required: true, type: String },
+    },
+  ],
 
   // ARREST
-  DCNum: String,
   SID: String,
   arrestDate: Date,
   arrestingDistrict: String,
@@ -51,11 +52,15 @@ const IntakeFormSchema = new Schema({
 
   petitions: [
     {
-      petitionNumber: String,
-      dateFiled: Date,
-      isDirectFiled: Boolean,
-      isDiverted: Boolean,
-      isTransferFromOtherCounty: Boolean,
+      dateFiled: { required: true, type: Date },
+      DCNum: String,
+      incidentID: { required: true, type: String },
+      isDirectFiled: { required: true, type: Boolean },
+      isDiverted: { required: true, type: Boolean },
+      isTransferFromOtherCounty: { required: true, type: Boolean },
+      petitionNumber: { required: true, type: String },
+      victimFirstName: String,
+      victimLastName: String,
       charges: [
         {
           code: String,

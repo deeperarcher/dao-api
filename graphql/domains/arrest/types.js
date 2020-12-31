@@ -2,7 +2,6 @@ const Arrest = `
   type Arrest {
     arrestDate: String
     arrestingDistrict: String
-    DCNum: String
     isGunCase: Boolean
     isGunInvolvedArrest: Boolean
     officers: [String]

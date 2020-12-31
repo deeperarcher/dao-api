@@ -21,16 +21,8 @@ const IntakeFormInput = `
     guardian2LastName: String
     guardian2Relation: String
 
-    incidentDate: String
-    isIncidentTimeKnown:  Boolean 
-    incidentAddress: String
-    incidentZip: String
-    incidentDistrict: String
-    incidentType: String
-    victimFirstName: String
-    victimLastName: String
+    incidents: [IncidentInput!]!
 
-    DCNum: String
     SID: String
     arrestDate: String
     arrestingDistrict: String
@@ -39,7 +31,7 @@ const IntakeFormInput = `
     isGunInvolvedArrest: Boolean
     officers: [String]
 
-    petitions: [PetitionInput]
+    petitions: [PetitionInput!]!
 
     DA: String
     notes: String
@@ -72,14 +64,29 @@ const IntakeFormInput = `
     initialHearingLocation: String
   }`;
 
+const IncidentInput = `
+  input IncidentInput {
+    incidentDate: String!
+    incidentID: String!
+    isIncidentTimeKnown: Boolean
+    incidentAddress: String
+    incidentZip: String
+    incidentDistrict: String
+    incidentType: String
+  }`;
+
 const PetitionInput = `
   input PetitionInput {
-    charges: [PetitionChargeInput]
-    dateFiled: String
+    charges: [PetitionChargeInput!]!
+    DCNum: String
+    dateFiled: String!
+    incidentID: String!
     isDirectFiled: Boolean
     isDiverted: Boolean
     isTransferFromOtherCounty: Boolean
-    petitionNumber: String
+    petitionNumber: String!
+    victimFirstName: String
+    victimLastName: String
   }`;
 
 const PetitionChargeInput = `
@@ -104,6 +111,7 @@ const CourtOrderEventInput = `
 export default [
   CourtOrderEventInput,
   IntakeFormInput,
+  IncidentInput,
   PetitionChargeInput,
   PetitionInput,
 ];

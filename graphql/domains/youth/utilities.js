@@ -2,7 +2,6 @@ export function deriveArrest(intakeForm) {
   return {
     arrestDate: intakeForm.arrestDate,
     arrestingDistrict: intakeForm.arrestingDistrict,
-    DCNum: intakeForm.DCNum,
     isGunCase: intakeForm.isGunCase,
     isGunInvolvedArrest: intakeForm.isGunInvolvedArrest,
     officers: intakeForm.officers,
@@ -11,17 +10,16 @@ export function deriveArrest(intakeForm) {
   };
 }
 
-export function deriveIncident(intakeForm) {
-  return {
-    incidentAddress: intakeForm.incidentAddress,
-    incidentDate: intakeForm.incidentDate,
-    incidentDistrict: intakeForm.incidentDistrict,
-    incidentType: intakeForm.incidentType,
-    incidentZip: intakeForm.incidentZip,
-    isIncidentTimeKnown: intakeForm.isIncidentTimeKnown,
-    victimFirstName: intakeForm.victimFirstName,
-    victimLastName: intakeForm.victimLastName,
-  };
+export function deriveIncidents(intakeForm) {
+  return intakeForm.incidents.map(incident => ({
+    incidentAddress: incident.incidentAddress,
+    incidentDate: incident.incidentDate,
+    incidentDistrict: incident.incidentDistrict,
+    incidentID: incident.incidentID,
+    incidentType: incident.incidentType,
+    incidentZip: incident.incidentZip,
+    isIncidentTimeKnown: incident.isIncidentTimeKnown,
+  }));
 }
 
 function deriveIntialStatusEvent(petition) {
@@ -48,10 +46,12 @@ export function derivePetitions(intakeForm) {
       name: charge.name,
     })),
     dateFiled: petition.dateFiled,
+    DCNum: petition.DCNum,
+    incidentID: petition.incidentID,
     isDirectFiled: petition.isDirectFiled,
     isDiverted: petition.isDiverted,
     isTransferFromOtherCounty: petition.isTransferFromOtherCounty,
-    petitionNum: petition.petitionNum,
+    petitionNumber: petition.petitionNumber,
     legalStatusEvents: [deriveIntialStatusEvent(petition)],
   }));
 }

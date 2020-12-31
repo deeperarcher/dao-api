@@ -1,5 +1,3 @@
-import util from 'util';
-
 const apiProps = `
   PID
   firstName
@@ -22,16 +20,16 @@ const apiProps = `
   guardian2LastName
   guardian2Relation
 
-  incidentDate
-  isIncidentTimeKnown
-  incidentAddress
-  incidentZip
-  incidentDistrict
-  incidentType
-  victimFirstName
-  victimLastName
+  incidents {
+    incidentDate
+    incidentID
+    isIncidentTimeKnown
+    incidentAddress
+    incidentZip
+    incidentDistrict
+    incidentType
+  }
 
-  DCNum
   SID
   arrestDate
   arrestingDistrict
@@ -78,11 +76,15 @@ const apiProps = `
   }
 
   petitions {
-    petitionNumber
     dateFiled
+    DCNum
     isDirectFiled
     isDiverted
     isTransferFromOtherCounty
+    incidentID
+    petitionNumber
+    victimFirstName
+    victimLastName
     charges {
       code
       name
@@ -115,16 +117,18 @@ export const sampleForm = {
   guardian2LastName: 'MyGuard2L',
   guardian2Relation: 'Father',
 
-  incidentDate: '1603324800000',
-  isIncidentTimeKnown: true,
-  incidentAddress: '124 Streetsville Rd.',
-  incidentZip: '19148-1234',
-  incidentDistrict: '12',
-  incidentType: 'School',
-  victimFirstName: 'Michael',
-  victimLastName: 'Tyson',
+  incidents: [
+    {
+      incidentID: '124STREETS1603324800000',
+      incidentDate: '1603324800000',
+      isIncidentTimeKnown: true,
+      incidentAddress: '124 Streetsville Rd.',
+      incidentZip: '19148-1234',
+      incidentDistrict: '12',
+      incidentType: 'School',
+    },
+  ],
 
-  DCNum: '1245641-12',
   SID: '1245511',
   arrestDate: '1603354380000',
   arrestingDistrict: '13',
@@ -180,10 +184,14 @@ export const sampleForm = {
         },
       ],
       dateFiled: '1603324800000',
+      DCNum: '1245641-12',
+      incidentID: '124STREETS1603324800000',
       isDirectFiled: false,
       isDiverted: true,
       isTransferFromOtherCounty: false,
       petitionNumber: '1742561',
+      victimFirstName: 'Michael',
+      victimLastName: 'Tyson',
     },
     {
       charges: [
@@ -203,10 +211,14 @@ export const sampleForm = {
         },
       ],
       dateFiled: '1603324800000',
+      DCNum: null,
+      incidentID: '124STREETS1603324800000',
       isDirectFiled: true,
       isDiverted: false,
       isTransferFromOtherCounty: false,
       petitionNumber: '2164655',
+      victimFirstName: null,
+      victimLastName: null,
     },
   ],
   courtOrderEvents: [

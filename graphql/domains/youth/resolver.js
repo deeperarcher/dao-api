@@ -1,6 +1,6 @@
 import IntakeForm from '../../../server/models/intake-form';
 
-import { deriveArrest, deriveIncident, derivePetitions } from './utilities';
+import { deriveArrest, deriveIncidents, derivePetitions } from './utilities';
 
 function deriveYouth(intakeFormsByPID) {
   return intakeFormsByPID.reduce(
@@ -10,7 +10,7 @@ function deriveYouth(intakeFormsByPID) {
       lastName: thisForm.lastName,
       PID: thisForm.PID,
       arrests: [...lastForm.arrests, deriveArrest(thisForm)],
-      incidents: [...lastForm.incidents, deriveIncident(thisForm)],
+      incidents: [...lastForm.incidents, ...deriveIncidents(thisForm)],
       petitions: [...lastForm.petitions, ...derivePetitions(thisForm)],
     }),
     {

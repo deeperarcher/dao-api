@@ -13,11 +13,15 @@ const Petition = `
   type Petition {
     charges: [PetitionCharge]
     dateFiled: String
+    DCNum: String
+    incidentID: String!
     isDirectFiled: Boolean
     isDiverted: Boolean
     isTransferFromOtherCounty: Boolean
     legalStatusEvents: [LegalStatusEvent]!
-    petitionNumber: String
+    petitionNumber: String!
+    victimFirstName: String
+    victimLastName: String
   }
 `;
 

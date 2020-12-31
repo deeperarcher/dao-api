@@ -24,6 +24,7 @@ export class Youth {
   }
 
   generateIntakeData() {
+    console.log('label', new IntakeForm(this));
     return new IntakeForm(this);
   }
 }
@@ -34,17 +35,7 @@ class IntakeForm {
     this.lastName = youth.lastName;
     this.dateOfBirth = youth.dateOfBirth;
     this.PID = youth.PID;
-
-    this.incidentDate = faker.date.recent();
-    this.isIncidentTimeKnown = faker.random.boolean();
-    this.incidentAddress = faker.address.streetAddress();
-    this.incidentZip = faker.address.zipCode();
-    this.incidentDistrict = faker.random.number(50) + 1;
-    this.incidentType = fromList(LIST.IncidentType);
-    this.victimFirstName = faker.name.firstName();
-    this.victimLastName = faker.name.lastName();
-
-    this.DCNum = (faker.random.number(89999) + 10000).toString();
+    this.incidents = intoArray(3, () => new Incident());
     this.SID = (faker.random.number(89999) + 10000).toString();
     this.arrestDate = faker.date.recent();
     this.arrestingDistrict = faker.random.number(25);
@@ -85,11 +76,29 @@ class IntakeForm {
     this.initialHearingDate = faker.date.soon();
     this.initialHearingLocation = fromList(LIST.Courtroom);
 
-    this.petitions = intoArray(3, () => new Petition());
+    this.petitions = intoArray(3, () => new Petition(this.incidents));
+
     this.courtOrderEvents = intoArray(
       3,
       () => new CourtOrderEvent(this.petitions)
     );
+  }
+}
+
+class Incident {
+  constructor() {
+    this.incidentDate = faker.date.recent();
+    this.incidentAddress = faker.address.streetAddress();
+    this.incidentID = (
+      this.incidentAddress.substr(0, 10) +
+      this.incidentDate.toDateString().substr(0, 10)
+    )
+      .replace(/\s/g, '')
+      .toUpperCase();
+    this.isIncidentTimeKnown = faker.random.boolean();
+    this.incidentZip = faker.address.zipCode();
+    this.incidentDistrict = faker.random.number(50) + 1;
+    this.incidentType = fromList(LIST.IncidentType);
   }
 }
 
@@ -107,11 +116,17 @@ class CourtOrderEvent {
 }
 
 class Petition {
-  constructor() {
+  constructor(incidents) {
     this.petitionNumber = faker.random.number(10000).toString();
     this.dateFiled = faker.date.recent();
+    this.DCNum = (faker.random.number(89999) + 10000).toString();
+    this.incidentID = faker.random.arrayElement(incidents).incidentID;
     this.isDirectFiled = false;
     this.isDiverted = false;
+    this.isTransferFromOtherCounty = false;
+    this.victimFirstName = faker.name.firstName();
+    this.victimLastName = faker.name.lastName();
+
     this.charges = intoArray(3, (val, i) => new Charge(i === 0));
   }
 }
