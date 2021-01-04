@@ -41,6 +41,56 @@ const apiProps = `
       category
     }
   }
+
+  adjudications {
+    chargeIDs
+    date
+    reasons
+  }
+
+  admissions {
+    chargeIDs
+    date
+    result
+  }
+
+  certifications {
+    date
+    petitionNumbers
+  }
+
+  continuances {
+    date
+    listingStatus
+    petitionNumbers
+    reasons
+  }
+
+  courtOrderEvents {
+    eventType
+    isSupervision
+    order
+    petitionNumbers
+    provider
+    reasons
+  }
+
+  legalStatusEvents {
+    date
+    dischargeNature
+    dischargeOutcome
+    eventType
+    petitionNumbers
+    reasons
+    status
+  }
+
+  listings {
+    courtroom
+    date
+    DA
+    notes
+  }
 `;
 
 export const youthQuery = `

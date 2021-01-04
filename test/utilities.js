@@ -23,11 +23,48 @@ export class Youth {
       faker.date.between('2003-01-01', '2008-12-31')
     );
     this.PID = faker.random.number(10000);
+    this.petitions = [];
+    this.chargeIDs = [];
+    this.courtOrderEvents = [];
+    this.legalStatusEvents = [];
+    this.nextListingDate = null;
+    this.nextListingLocation = null;
   }
 
   generateIntakeData() {
-    console.log('label', new IntakeForm(this));
-    return new IntakeForm(this);
+    const intakeForm = new IntakeForm(this);
+
+    this.petitions = [...this.petitions, ...intakeForm.petitions];
+
+    intakeForm.petitions.forEach(({ charges }) => {
+      charges.forEach(({ chargeID }) => {
+        this.chargeIDs.push(chargeID);
+      });
+    });
+
+    this.nextListingDate = intakeForm.initialHearingDate;
+    this.nextListingLocation = intakeForm.initialHearingLocation;
+
+    return intakeForm;
+  }
+
+  generateListings(num) {
+    return new Array(num).fill().map(() => {
+      const listing = new Listing(this);
+
+      this.nextListingDate = listing.nextListingDate;
+      this.nextListingLocation = listing.nextListingLocation;
+      this.legalStatusEvents = [
+        ...this.legalStatusEvents,
+        ...listing.legalStatusEvents,
+      ];
+      this.courtOrderEvents = [
+        ...this.legalStatusEvents,
+        ...listing.legalStatusEvents,
+      ];
+
+      return listing;
+    });
   }
 }
 
@@ -82,11 +119,67 @@ class IntakeForm {
 
     this.courtOrderEvents = intoArray(
       3,
-      () => new CourtOrderEvent(this.petitions)
+      () => new CourtOrderEvent(this.petitions.map(p => p.petitionNumber))
     );
   }
 }
 
+class Listing {
+  constructor(youth) {
+    const {
+      chargeIDs,
+      nextListingDate,
+      nextListingLocation,
+      petitions,
+    } = youth;
+    const petitionNumbers = petitions.map(p => p.petitionNumber);
+
+    this.PID = youth.PID;
+    this.courtroom = nextListingLocation;
+    this.date = nextListingDate;
+    this.DA = faker.name.lastName();
+
+    this.adjudications = [
+      {
+        chargeIDs: faker.random.arrayElements(chargeIDs),
+        date: nextListingDate,
+        reasons: intoArray(3, () => faker.random.words(2)),
+      },
+    ];
+
+    this.admissions = [
+      {
+        chargeIDs: faker.random.arrayElements(chargeIDs),
+        date: nextListingDate,
+        result: faker.random.words(2),
+      },
+    ];
+
+    this.certifications = [
+      {
+        date: nextListingDate,
+        petitionNumbers: faker.random.arrayElements(petitionNumbers),
+      },
+    ];
+
+    this.continuances = [
+      {
+        date: nextListingDate,
+        listingStatus: faker.random.words(2),
+        petitionNumbers: faker.random.arrayElements(petitionNumbers),
+        reasons: intoArray(3, () => faker.random.words(2)),
+      },
+    ];
+
+    this.courtOrderEvents = intoArray(
+      3,
+      () => new CourtOrderEvent(petitionNumbers)
+    );
+
+    this.legalStatusEvents = new LegalStatusEvents(youth);
+    this.notes = faker.lorem.words(20);
+  }
+}
 class Incident {
   constructor() {
     this.incidentDate = formatDate(faker.date.recent());
@@ -104,9 +197,9 @@ class Incident {
 }
 
 class CourtOrderEvent {
-  constructor(petitions) {
+  constructor(petitionNumbers) {
     this.isSupervision = faker.random.boolean();
-    this.petitionNumbers = petitions.map(p => p.petitionNumber);
+    this.petitionNumbers = faker.random.arrayElements(petitionNumbers);
     this.order = fromList(
       this.isSupervision ? LIST.SupervisionType : LIST.ConditionType
     );
@@ -142,5 +235,26 @@ class Charge {
     this.isLead = isLead;
     this.grade = fromList(LIST.ChargeGrade);
     this.category = fromList(LIST.ChargeCategory);
+  }
+}
+
+class LegalStatusEvents {
+  constructor(youth) {
+    const { legalStatusEvents, petitions } = youth;
+    const petitionNumbers = petitions.map(p => p.petitionNumber);
+    const lastStatus =
+      legalStatusEvents.length > 0
+        ? legalStatusEvents[legalStatusEvents.length - 1].status
+        : 'PRETRIAL';
+
+    return new Array(2).fill().map((el, i) => ({
+      date: youth.nextListingDate,
+      dischargeNature: i === 0 && fromList(LIST.Nature),
+      dischargeOutcome: i === 0 && faker.random.words(2),
+      eventType: i === 0 ? 'DISCHARGED' : 'ORDERED',
+      petitionNumbers,
+      reasons: intoArray(3, () => faker.random.words(2)),
+      status: i === 0 ? lastStatus : fromList(LIST.LegalStatus),
+    }));
   }
 }
