@@ -1,6 +1,10 @@
 import * as faker from 'faker';
 import LIST from '../input-lists';
 
+function formatDate(date) {
+  return date.toISOString().substr(0, 10);
+}
+
 function fromList(list) {
   return faker.random.arrayElement(Object.keys(list));
 }
@@ -11,15 +15,13 @@ function intoArray(max, body) {
     .map(typeof body === 'function' ? body : () => body);
 }
 
-export function dateStringToMs(dateString) {
-  return Math.floor(new Date(dateString).getTime()).toString();
-}
-
 export class Youth {
   constructor() {
     this.firstName = faker.name.firstName();
     this.lastName = faker.name.lastName();
-    this.dateOfBirth = faker.date.between('2003-01-01', '2008-12-31');
+    this.dateOfBirth = formatDate(
+      faker.date.between('2003-01-01', '2008-12-31')
+    );
     this.PID = faker.random.number(10000);
   }
 
@@ -39,7 +41,7 @@ class IntakeForm {
     this.SID = (faker.random.number(89999) + 10000).toString();
     this.arrestDate = faker.date.recent();
     this.arrestingDistrict = faker.random.number(25);
-    this.referralDate = faker.date.recent();
+    this.referralDate = formatDate(faker.date.recent());
     this.isGunCase = faker.random.boolean();
     this.isGunInvolvedArrest = faker.random.boolean();
     this.officers = intoArray(3, () =>
@@ -53,27 +55,27 @@ class IntakeForm {
     this.traumaTypes = intoArray(3, () => fromList(LIST.TraumaType));
     this.treatments = intoArray(3, () => fromList(LIST.Treatment));
 
-    this.callInDate = faker.date.recent();
+    this.callInDate = formatDate(faker.date.recent());
     this.wasDRAIAdministered = faker.random.boolean();
     this.DRAIScore = faker.random.number(12);
     this.DRAIAction = fromList(LIST.DRAIAction);
     this.callInHoldFacility = fromList(LIST.DetentionFacility);
     this.callInOverrideHoldReasons = intoArray(3, () => faker.random.words(2));
 
-    this.intakeConferenceDate = faker.date.recent();
+    this.intakeConferenceDate = formatDate(faker.date.recent());
     this.intakeConferenceType = fromList(LIST.IntakeConferenceType);
     this.intakeConferenceOutcome = fromList(LIST.IntakeConferenceOutcome);
     this.DHSStatusAtArrest = fromList(LIST.DHSStatus);
 
     // DIVERSION
     this.diversionType = faker.random.word();
-    this.diversionReferralDate = faker.date.recent();
+    this.diversionReferralDate = formatDate(faker.date.recent());
     this.diversionReferralSource = faker.random.word();
     this.YAPPanelDistrict = faker.random.number(20);
     this.ReasonsNoDiversion = intoArray(3, () => faker.random.words(2));
 
     // NEXT HEARING
-    this.initialHearingDate = faker.date.soon();
+    this.initialHearingDate = formatDate(faker.date.soon());
     this.initialHearingLocation = fromList(LIST.Courtroom);
 
     this.petitions = intoArray(3, () => new Petition(this.incidents));
@@ -87,11 +89,10 @@ class IntakeForm {
 
 class Incident {
   constructor() {
-    this.incidentDate = faker.date.recent();
+    this.incidentDate = formatDate(faker.date.recent());
     this.incidentAddress = faker.address.streetAddress();
     this.incidentID = (
-      this.incidentAddress.substr(0, 10) +
-      this.incidentDate.toDateString().substr(0, 10)
+      this.incidentAddress.substr(0, 10) + this.incidentDate.substr(0, 10)
     )
       .replace(/\s/g, '')
       .toUpperCase();
@@ -118,7 +119,7 @@ class CourtOrderEvent {
 class Petition {
   constructor(incidents) {
     this.petitionNumber = faker.random.number(10000).toString();
-    this.dateFiled = faker.date.recent();
+    this.dateFiled = formatDate(faker.date.recent());
     this.DCNum = (faker.random.number(89999) + 10000).toString();
     this.incidentID = faker.random.arrayElement(incidents).incidentID;
     this.isDirectFiled = false;

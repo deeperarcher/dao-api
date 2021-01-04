@@ -11,7 +11,7 @@ const IntakeFormSchema = new Schema({
   PID: { required: true, type: Number },
   firstName: { required: true, type: String },
   lastName: { required: true, type: String },
-  dateOfBirth: { required: true, type: Date },
+  dateOfBirth: { required: true, type: String },
   sex: String,
   race: String,
   isLatino: Boolean,
@@ -32,7 +32,7 @@ const IntakeFormSchema = new Schema({
   incidents: [
     {
       incidentID: { required: true, type: String },
-      incidentDate: Date,
+      incidentDate: String,
       isIncidentTimeKnown: { required: true, type: Boolean },
       incidentAddress: String,
       incidentZip: String,
@@ -43,16 +43,16 @@ const IntakeFormSchema = new Schema({
 
   // ARREST
   SID: String,
-  arrestDate: Date,
+  arrestDate: String,
   arrestingDistrict: String,
-  referralDate: Date,
+  referralDate: String,
   isGunCase: Boolean,
   isGunInvolvedArrest: Boolean,
   officers: [String], //payroll#
 
   petitions: [
     {
-      dateFiled: { required: true, type: Date },
+      dateFiled: { required: true, type: String },
       DCNum: String,
       incidentID: { required: true, type: String },
       isDirectFiled: { required: true, type: Boolean },
@@ -82,7 +82,7 @@ const IntakeFormSchema = new Schema({
   treatments: [String],
 
   // CALL-IN
-  callInDate: Date,
+  callInDate: String,
   wasDRAIAdministered: Boolean,
   DRAIScore: Number,
   DRAIAction: String,
@@ -90,7 +90,7 @@ const IntakeFormSchema = new Schema({
   callInOverrideHoldReasons: [String],
 
   // INTAKE CONFERENCE
-  intakeConferenceDate: Date,
+  intakeConferenceDate: String,
   intakeConferenceType: String,
   intakeConferenceOutcome: String,
   DHSStatusAtArrest: String,
@@ -108,7 +108,7 @@ const IntakeFormSchema = new Schema({
 
   // DIVERSION
   diversionType: String,
-  diversionReferralDate: Date,
+  diversionReferralDate: String,
   diversionReferralSource: String,
   YAPPanelDistrict: String,
   ReasonsNoDiversion: [String],
