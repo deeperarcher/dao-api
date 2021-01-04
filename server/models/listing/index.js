@@ -42,7 +42,7 @@ const ListingSchema = new Schema({
       order: String,
       petitionNumbers: [String],
       provider: String,
-      statusReasons: [String],
+      reasons: [String],
     },
   ],
   courtroom: { required: true, type: String },

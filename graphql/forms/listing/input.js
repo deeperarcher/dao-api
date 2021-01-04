@@ -37,7 +37,7 @@ const CourtOrderEventInput = `
     order: String
     petitionNumbers: [String]
     provider: String
-    statusReasons: [String]
+    reasons: [String]
     }
 `;
 

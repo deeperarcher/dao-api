@@ -25,7 +25,7 @@ const apiProps = `
     order
     petitionNumbers
     provider
-    statusReasons
+    reasons
   }
   courtroom
   date
