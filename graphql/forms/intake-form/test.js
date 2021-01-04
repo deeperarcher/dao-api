@@ -1,5 +1,6 @@
 import { createTestClient } from 'apollo-server-testing';
 import { insertIntakeForm, intakeFormQuery } from './sample-queries';
+import { derivePetitions } from './utilities';
 import createServer from '../../../server/create-graphql-server';
 
 import { sampleForm } from './sample-queries';
@@ -11,7 +12,10 @@ describe('mutation insertIntakeForm', () => {
     const { data, errors } = await mutate({ mutation });
 
     expect(errors).toEqual(undefined);
-    expect(data.insertIntakeForm).toEqual(sampleForm);
+    expect(data.insertIntakeForm).toEqual({
+      ...sampleForm,
+      petitions: derivePetitions(sampleForm),
+    });
   });
 });
 
@@ -21,6 +25,11 @@ describe('query intakeForms', () => {
     const { data, errors } = await query({ query: intakeFormQuery });
 
     expect(errors).toEqual(undefined);
-    expect(data.intakeForms).toEqual([sampleForm]);
+    expect(data.intakeForms).toEqual([
+      {
+        ...sampleForm,
+        petitions: derivePetitions(sampleForm),
+      },
+    ]);
   });
 });
