@@ -94,8 +94,8 @@ const apiProps = `
 `;
 
 export const youthQuery = `
-  query ($PID: Int!) {
-    youth(PID: $PID) {
+  query ($PID: Int! $petitionNumbers: [String!]) {
+    youth(PID: $PID petitionNumbers: $petitionNumbers) {
       ${apiProps}
     }
   }

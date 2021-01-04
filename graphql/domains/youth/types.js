@@ -19,7 +19,10 @@ const Youth = `
 
 const Query = `
   type Query {
-    youth(PID: Int!): Youth!
+    youth(
+      PID: Int!
+      petitionNumbers: [String]
+    ): Youth!
     youths: [Youth]!
   }
 `;
