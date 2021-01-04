@@ -64,6 +64,8 @@ const Listing = `
     date: String
     DA: String
     legalStatusEvents: [LegalStatusEvent]
+    nextListingDate: String
+    nextListingLocation: String
     notes: String
     PID: Int!
 }`;

@@ -59,6 +59,8 @@ const ListingSchema = new Schema({
       status: String,
     },
   ],
+  nextListingDate: String,
+  nextListingLocation: String,
   notes: String,
   PID: { required: true, type: Number },
 });

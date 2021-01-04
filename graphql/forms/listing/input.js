@@ -64,6 +64,8 @@ const ListingInput = `
     date: String
     DA: String
     legalStatusEvents: [LegalStatusEventInput]
+    nextListingDate: String
+    nextListingLocation: String
     notes: String
     PID: Int
   }

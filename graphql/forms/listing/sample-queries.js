@@ -39,6 +39,8 @@ const apiProps = `
     reasons
     status
   }
+  nextListingDate
+  nextListingLocation
   notes
   PID
 `;
@@ -64,6 +66,8 @@ export const sampleForm = {
       status: 'WITHDRAWN',
     },
   ],
+  nextListingDate: '2014-11-12',
+  nextListingLocation: 'CR1234',
   notes: 'test note',
   PID: 1,
 };
