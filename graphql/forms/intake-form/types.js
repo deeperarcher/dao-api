@@ -92,6 +92,7 @@ const IntakeFormPetition = `
 
 const PetitionCharge = `
   type PetitionCharge {
+    chargeID: String!
     code: String
     name: String
     isLead: Boolean

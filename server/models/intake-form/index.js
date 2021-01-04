@@ -63,7 +63,7 @@ const IntakeFormSchema = new Schema({
       victimLastName: String,
       charges: [
         {
-          code: String,
+          code: { required: true, type: String },
           name: String,
           isLead: Boolean,
           grade: String,

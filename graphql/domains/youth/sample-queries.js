@@ -33,6 +33,7 @@ const apiProps = `
     victimFirstName
     victimLastName
     charges {
+      chargeID
       code
       name
       isLead

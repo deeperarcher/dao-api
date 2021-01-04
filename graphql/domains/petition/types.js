@@ -27,6 +27,7 @@ const Petition = `
 
 const PetitionCharge = `
   type PetitionCharge {
+    chargeID: String!
     category: String
     code: String
     grade: String

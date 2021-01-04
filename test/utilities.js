@@ -126,14 +126,17 @@ class Petition {
     this.isTransferFromOtherCounty = false;
     this.victimFirstName = faker.name.firstName();
     this.victimLastName = faker.name.lastName();
-
-    this.charges = intoArray(3, (val, i) => new Charge(i === 0));
+    this.charges = intoArray(
+      3,
+      (val, i) => new Charge(i === 0, this.petitionNumber)
+    );
   }
 }
 
 class Charge {
-  constructor(isLead) {
+  constructor(isLead, petitionNumber) {
     this.code = faker.random.alphaNumeric(5);
+    this.chargeID = `${petitionNumber}${this.code}`;
     this.name = faker.name.jobTitle();
     this.isLead = isLead;
     this.grade = fromList(LIST.ChargeGrade);
