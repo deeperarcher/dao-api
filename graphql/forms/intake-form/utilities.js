@@ -63,3 +63,20 @@ export function normalizeIntakeForm(intakeForm, petitionNumbers) {
     petitions,
   };
 }
+
+export function reduceIntakeForms({ intakeForms, petitionNumbers }) {
+  return intakeForms
+    .map(form => normalizeIntakeForm(form, petitionNumbers))
+    .reduce(
+      (lastForm, thisForm) => ({
+        arrests: [...lastForm.arrests, thisForm.arrest],
+        incidents: [...lastForm.incidents, ...thisForm.incidents],
+        legalStatusEvents: [
+          ...lastForm.legalStatusEvents,
+          ...thisForm.legalStatusEvents,
+        ],
+        petitions: [...lastForm.petitions, ...thisForm.petitions],
+      }),
+      { arrests: [], incidents: [], legalStatusEvents: [], petitions: [] }
+    );
+}

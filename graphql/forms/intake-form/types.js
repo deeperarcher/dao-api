@@ -43,6 +43,7 @@ const IntakeForm = `
     officers: [String]
 
     petitions: [IntakeFormPetition!]!
+    legalStatusEvents: [LegalStatusEvent]!
 
     DA: String
     notes: String
