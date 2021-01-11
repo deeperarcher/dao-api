@@ -1,15 +1,20 @@
 {
-  "name": "dao-gqk",
+  "name": "dao-api",
   "version": "1.0.0",
   "description": "GraphQL + MongoDB server for DAO",
   "main": "index.js",
   "scripts": {
     "format": "prettier --write \"**/*.js\"",
-    "start": "npm run server",
+    "seed": "babel-node server/seed.js",
     "server": "nodemon --exec babel-node server/index.js",
+    "start": "npm run server",
+    "start-seed": "npm run server & npm run seed",
     "test": "jest --watch"
   },
-  "author": "Alan Lee <alanjlee89@gmail.com>",
+  "contributors": [
+    "Alan Lee <alanjlee89@gmail.com>",
+    "Jacob Merrell <jacobscarfmerrell@gmail.com"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
