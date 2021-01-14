@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "format": "prettier --write \"**/*.js\"",
+    "format:ci": "prettier --list-different \"**/*.js\"",
     "seed": "babel-node server/seed.js",
     "server": "nodemon --exec babel-node server/index.js",
     "start": "npm run server",
     "start-seed": "npm run server & npm run seed",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "test:ci": "jest"
   },
   "contributors": [
     "Alan Lee <alanjlee89@gmail.com>",

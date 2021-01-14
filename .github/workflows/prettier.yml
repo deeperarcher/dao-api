@@ -1,0 +1,31 @@
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  code-checks:
+    name: Format & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          # Make sure the actual branch is checked out when running on pull requests
+          ref: ${{ github.head_ref }}
+          # This is important to fetch the changes to the previous commit
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - name: Install Node Modules
+        run: yarn
+
+      - name: Run Formatter
+        run: yarn run format:ci
+
+      - name: Run Test Suite
+        run: yarn run test:ci
