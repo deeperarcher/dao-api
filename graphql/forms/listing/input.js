@@ -44,7 +44,7 @@ const CourtOrderEventInput = `
 const LegalStatusEventInput = `
     input LegalStatusEventInput {
     date: String
-    dischargeNature: String
+    dischargeNature: Nature
     dischargeOutcome: String
     eventType: String
     petitionNumbers: [String]
