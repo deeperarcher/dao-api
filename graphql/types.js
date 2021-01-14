@@ -11,6 +11,8 @@ import IntakeFormTypes from './forms/intake-form/types';
 import ListingInput from './forms/listing/input';
 import ListingTypes from './forms/listing/types';
 
+import enums from './enums';
+
 const typeDefs = [
   ...ArrestTypes,
   ...IncidentTypes,
@@ -20,6 +22,7 @@ const typeDefs = [
   ...IntakeFormTypes,
   ...ListingInput,
   ...ListingTypes,
+  ...enums,
 ];
 
 export default mergeTypeDefs(typeDefs, { all: true });
