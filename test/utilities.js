@@ -24,7 +24,6 @@ export class Youth {
   }
 
   generateIntakeData() {
-    console.log('label', new IntakeForm(this));
     return new IntakeForm(this);
   }
 }

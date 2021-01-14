@@ -7,6 +7,10 @@ services:
   graphql-server:
     build:
       context: './'
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    restart: always
     ports:
       - 4000:4000
     depends_on:
