@@ -9,6 +9,7 @@ ObjectID.prototype.valueOf = function () {
 const ListingSchema = new Schema({
   adjudications: [
     {
+      adjudicationType: String,
       chargeIDs: [String],
       date: String,
       reasons: [String],
@@ -16,6 +17,7 @@ const ListingSchema = new Schema({
   ],
   admissions: [
     {
+      admissionType: String,
       chargeIDs: [String],
       date: String,
       result: String,
@@ -27,26 +29,38 @@ const ListingSchema = new Schema({
       petitionNumbers: [String],
     },
   ],
+  chargeGradeEvents: [
+    {
+      date: String,
+      chargeIDs: [String],
+      grade: String,
+    },
+  ],
   continuances: [
     {
+      continuanceType: String,
       date: String,
       listingStatus: String,
       petitionNumbers: [String],
       reasons: [String],
     },
   ],
-  courtOrderEvents: [
+  courtDate: {
+    courtroom: {
+      name: String,
+    },
+    date: String,
+  },
+  courtOrders: [
     {
-      eventType: String,
+      courtOrderType: String,
       isSupervision: Boolean,
       order: String,
       petitionNumbers: [String],
-      provider: String,
-      statusReasons: [String],
+      serviceProvider: String,
+      reasons: [String],
     },
   ],
-  courtroom: { required: true, type: String },
-  date: { required: true, type: String },
   DA: String,
   legalStatusEvents: [
     {
@@ -59,8 +73,17 @@ const ListingSchema = new Schema({
       status: String,
     },
   ],
-  notes: String,
-  PID: { required: true, type: Number },
+  listingType: String,
+  nextListing: {
+    courtroom: {
+      name: String,
+    },
+    date: String,
+  },
+  note: String,
+  youth: {
+    PID: { required: true, type: Number },
+  },
 });
 
 export default mongoose.model('Listing', ListingSchema);

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-import { Youth } from '../test/utilities';
-import Models from './models';
+import IntakeForm from './models/IntakeForm';
+import MockIntakeForm from '../test/mocks/IntakeForm';
 
 const { IntakeForm } = Models;
 const db = process.env.mongoURI;

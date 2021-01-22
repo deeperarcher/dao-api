@@ -1,4 +1,4 @@
-import IntakeForm from './intake-form';
+import IntakeForm from './intakeForm';
 import Listing from './listing';
 
 export default {
