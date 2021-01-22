@@ -77,7 +77,6 @@ const IntakeFormSchema = new Schema({
       lastName: String,
       petitionNumber: [String],
     },
-    
   ],
   youth: {
     address: String,
