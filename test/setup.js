@@ -1,6 +1,5 @@
 import 'regenerator-runtime/runtime';
 import mongoose from 'mongoose';
-import seedDb from './seed';
 
 jest.setTimeout(10000);
 

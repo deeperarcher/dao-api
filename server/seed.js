@@ -3,9 +3,7 @@ import mongoose from 'mongoose';
 import IntakeForm from './models/IntakeForm';
 import MockIntakeForm from '../test/mocks/IntakeForm';
 
-const { IntakeForm } = Models;
 const db = process.env.mongoURI;
-const port = process.env.PORT || '4000';
 
 mongoose
   .connect(db, {
@@ -14,11 +12,9 @@ mongoose
   })
   .then(() => console.log('Generating seed data...'))
   .then(() => {
-    const youths = new Array(10).fill().map(() => new Youth());
-    youths.forEach(youth => {
-      IntakeForm.create(youth.generateIntakeData());
-      IntakeForm.create(youth.generateIntakeData());
-      IntakeForm.create(youth.generateIntakeData());
+    const tenTimes = new Array(10).fill();
+    tenTimes.forEach(() => {
+      IntakeForm.create(new MockIntakeForm());
     });
   })
   .then(() => console.log('DB seed complete!'))

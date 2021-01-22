@@ -33,6 +33,7 @@ const apiProps = `
     victimFirstName
     victimLastName
     charges {
+      chargeID
       code
       name
       isLead
@@ -93,7 +94,7 @@ const apiProps = `
 `;
 
 export const youthQuery = `
-  query ($PID: Int!) {
+  query($PID: Int!) {
     youth(PID: $PID) {
       ${apiProps}
     }
@@ -101,9 +102,9 @@ export const youthQuery = `
 `;
 
 export const youthsQuery = `
-query {
-  youths {
-    ${apiProps}
+  query {
+    youths {
+      ${apiProps}
+    }
   }
-}
 `;

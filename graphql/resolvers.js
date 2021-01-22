@@ -1,9 +1,8 @@
 import { mergeResolvers } from 'graphql-tools';
 
-import YouthResolver from './domains/youth/resolver';
-
-import IntakeFormResolver from './forms/intake-form/resolver';
-import ListingResolver from './forms/listing/resolver';
+import IntakeFormResolver from './domains/IntakeForm/resolver';
+import ListingResolver from './domains/Listing/resolver';
+import YouthResolver from './domains/Youth/resolver';
 
 const resolvers = [IntakeFormResolver, ListingResolver, YouthResolver];
 

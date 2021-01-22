@@ -11,6 +11,7 @@ import IncidentType from './incident-type';
 import IntakeConferenceOutcome from './intake-conference-outcome';
 import IntakeConferenceType from './intake-conference-type';
 import LegalStatus from './legal-status';
+import Nature from './nature';
 import Race from './race';
 import Relation from './relation';
 import Sex from './sex';
@@ -32,6 +33,7 @@ export default {
   IntakeConferenceOutcome,
   IntakeConferenceType,
   LegalStatus,
+  Nature,
   Race,
   Relation,
   Sex,
