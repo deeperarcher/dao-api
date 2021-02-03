@@ -11,7 +11,7 @@ describe('mutation insertListing', () => {
     const { data, errors } = await mutate({ mutation: insertListing });
 
     expect(errors).toEqual(undefined);
-    expect(data.insertListing).toEqual('testlisting1');
+    expect(data.insertListing).toEqual('1234');
   });
 });
 

@@ -10,7 +10,6 @@ const Guardian = `
 const GuardianInput = `
   input GuardianInput {
     firstName: String!
-    intakeFormID: String!
     lastName: String!
     relation: String!
   }

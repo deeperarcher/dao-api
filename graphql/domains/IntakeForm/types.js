@@ -4,7 +4,6 @@ const IntakeForm = `
     charges: [Charge]!
     courtOrders: [CourtOrder]!
     DA: String!
-    ID: String!
     incidents: [Incident]!
     initialHearing: CourtDate!
     note: String
@@ -19,7 +18,6 @@ const IntakeFormInput = `
     charges: [ChargeInput]!
     courtOrders: [CourtOrderInput]!
     DA: String!
-    ID: String!
     incidents: [IncidentInput]!
     initialHearing: CourtDateInput!
     note: String
@@ -34,11 +32,4 @@ const Mutation = `
   }
 `;
 
-const Query = `
-  type Query {
-    intakeForm(_id: String!): IntakeForm!
-    intakeForms(PID: Int): [IntakeForm]!
-  }
-`;
-
-export default [IntakeForm, IntakeFormInput, Mutation, Query];
+export default [IntakeForm, IntakeFormInput, Mutation];

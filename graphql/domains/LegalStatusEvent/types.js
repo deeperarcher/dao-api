@@ -17,7 +17,6 @@ const LegalStatusEventInput = `
     dischargeNature: String
     dischargeOutcome: String
     eventType: String!
-    listingID: String!
     petitionNumbers: [String]!
     reasons: [String]!
     status: String!

@@ -1,4 +1,11 @@
 const sampleProps = `
+adjudications {
+  charge {
+    ID
+  }
+  date
+  reasons
+}
 admissions {
   charge {
     ID
@@ -56,6 +63,7 @@ nextListing {
   date
 }
 note
+PID
 `;
 
 export const listingQuery = `
@@ -75,14 +83,12 @@ const input = {
   courtDate: { date: '2014-10-12', courtroom: { name: 'CR1234' } },
   courtOrders: [],
   DA: 'Sternamin',
-  ID: 'testlisting1',
   legalStatusEvents: [
     {
       date: '2014-10-12',
       dischargeNature: 'POSITIVE',
       dischargeOutcome: '',
       eventType: 'DISCHARGE',
-      listingID: 'testlisting1',
       petitionNumbers: ['1742561'],
       reasons: [],
       status: 'WITHDRAWN',
@@ -92,10 +98,12 @@ const input = {
   listingType: 'a listing-y listing',
   nextListing: { date: '2014-11-12', courtroom: { name: 'CR1234' } },
   note: 'test note',
+  PID: '1234',
 };
 
 export const response = [
   {
+    adjudications: [],
     admissions: [],
     certifications: [],
     continuances: [],
@@ -121,6 +129,7 @@ export const response = [
       date: '2014-11-12',
     },
     note: 'test note',
+    PID: '1234',
   },
 ];
 

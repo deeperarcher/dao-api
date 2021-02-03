@@ -9,7 +9,6 @@ ObjectID.prototype.valueOf = function () {
 const ListingSchema = new Schema({
   adjudications: [
     {
-      adjudicationType: String,
       chargeIDs: [String],
       date: String,
       reasons: [String],
@@ -17,7 +16,6 @@ const ListingSchema = new Schema({
   ],
   admissions: [
     {
-      admissionType: String,
       chargeIDs: [String],
       date: String,
       result: String,
@@ -54,15 +52,15 @@ const ListingSchema = new Schema({
   courtOrders: [
     {
       courtOrderType: String,
+      date: String,
       isSupervision: Boolean,
       order: String,
       petitionNumbers: [String],
-      serviceProvider: String,
       reasons: [String],
+      serviceProvider: String,
     },
   ],
   DA: String,
-  ID: { required: true, type: String, unique: true },
   legalStatusEvents: [
     {
       date: String,
@@ -82,6 +80,7 @@ const ListingSchema = new Schema({
     date: String,
   },
   note: String,
+  PID: { required: true, type: String },
 });
 
 export default mongoose.model('Listing', ListingSchema);
