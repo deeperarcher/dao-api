@@ -11,7 +11,6 @@ const AdmissionInput = `
   input AdmissionInput {
     chargeIDs: [String]!
     date: String!
-    listingID: String!
     result: String!
   }
 `;

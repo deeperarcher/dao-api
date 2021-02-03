@@ -6,7 +6,7 @@ import { fromList } from './utilities';
 export default class Charge {
   constructor(isLead, petitionNumber) {
     this.code = faker.random.alphaNumeric(5);
-    this.chargeID = `${petitionNumber}${this.code}`;
+    this.ID = `${petitionNumber}${this.code}`;
     this.name = faker.name.jobTitle();
     this.isLead = isLead;
     this.grade = fromList(LIST.ChargeGrade);

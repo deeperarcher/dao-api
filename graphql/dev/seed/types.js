@@ -1,23 +1,7 @@
-const SeedInput = `
-  input SeedInput {
-    "The number of youths to generate"
-    youthCount: Int!
-
-    "The number of intakes to generate for each youth generated"
-    intakesPerYouth: Int!
-
-    "The number of lisitngs to generate for each youth generated"
-    listingsPerYouth: Int!
-
-    "Whether to remove existing data before seeding"
-    shouldClearFirst: Boolean!
-  }
-`;
-
 const SeedResult = `
   type SeedResult {
-    IntakeForms: [IntakeForm!]
-    Listings:  [Listing!]
+    intakeForms: [IntakeForm!]!
+    listings:  [Listing!]!
   }
 `;
 
@@ -26,8 +10,13 @@ const Mutation = `
     """
     Quick data generator
     """
-    seed(input: SeedInput!): SeedResult!
+    seed(
+      numberOfIntakesEach: Int
+      numberOfListingsEach: Int
+      numberOfYouths: Int
+      shouldClearFirst: Boolean
+    ): SeedResult!
   }
 `;
 
-export default [Mutation, SeedInput, SeedResult];
+export default [Mutation, SeedResult];

@@ -11,7 +11,7 @@ describe('mutation insertIntakeForm', () => {
     const { data, errors } = await mutate({ mutation: insertIntakeForm });
 
     expect(errors).toEqual(undefined);
-    expect(data.insertIntakeForm).toEqual('testintakeform1');
+    expect(data.insertIntakeForm).toEqual('1234');
   });
 });
 

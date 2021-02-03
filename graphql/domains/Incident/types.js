@@ -20,7 +20,6 @@ const IncidentInput = `
     district: String
     ID: String!
     incidentType: String
-    intakeFormID: String!
     isTimeKnown: Boolean
     petitionNumber: String!
     zip: String

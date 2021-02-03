@@ -10,7 +10,6 @@ const ChargeGradeEvent = `
 const ChargeGradeEventInput = `
   input ChargeGradeEventInput {
     chargeID: String!
-    listingID: String!
     grade: String!
   }
 `;
