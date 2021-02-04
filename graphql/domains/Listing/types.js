@@ -29,7 +29,6 @@ const ListingInput = `
     courtDate: CourtDateInput!
     DA: String
     ID: String!
-    intakeFormID: String!
     legalStatusEvents: [LegalStatusEventInput]
     listingType: String
     nextListing: CourtDateInput!

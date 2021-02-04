@@ -76,7 +76,6 @@ const input = {
   courtOrders: [],
   DA: 'Sternamin',
   ID: 'testlisting1',
-  intakeFormID: 'testintakeform1',
   legalStatusEvents: [
     {
       date: '2014-10-12',
@@ -93,7 +92,6 @@ const input = {
   listingType: 'a listing-y listing',
   nextListing: { date: '2014-11-12', courtroom: { name: 'CR1234' } },
   note: 'test note',
-  intakeFormID: 'testintakeform1',
 };
 
 export const response = [

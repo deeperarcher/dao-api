@@ -62,7 +62,7 @@ const ListingSchema = new Schema({
     },
   ],
   DA: String,
-  ID: String,
+  ID: { required: true, type: String, unique: true },
   legalStatusEvents: [
     {
       date: String,
@@ -82,7 +82,6 @@ const ListingSchema = new Schema({
     date: String,
   },
   note: String,
-  intakeFormID: { required: true, type: String },
 });
 
 export default mongoose.model('Listing', ListingSchema);
