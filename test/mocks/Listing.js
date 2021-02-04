@@ -1,6 +1,7 @@
 import * as faker from 'faker';
 
 import { intoArray } from './utilities';
+import CourtOrder from './CourtOrder';
 
 class Listing {
   constructor(youth) {
@@ -16,6 +17,7 @@ class Listing {
     this.courtroom = nextListingLocation;
     this.date = nextListingDate;
     this.DA = faker.name.lastName();
+    this.ID = faker.random.number(10000).toString();
 
     this.adjudications = [
       {
@@ -49,9 +51,8 @@ class Listing {
       },
     ];
 
-    this.courtOrders = intoArray(3, () => new CourtOrders(petitionNumbers));
+    this.courtOrders = intoArray(3, () => new CourtOrder(petitionNumbers));
 
-    this.legalStatusEvents = new LegalStatusEvents(youth);
     this.notes = faker.lorem.words(20);
   }
 }

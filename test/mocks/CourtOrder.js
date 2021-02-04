@@ -1,5 +1,6 @@
 import * as faker from 'faker';
 import LIST from '../input-lists';
+import { fromList, intoArray } from './utilities';
 
 export default class CourtOrder {
   constructor(petitionNumbers) {

@@ -1,6 +1,8 @@
 import * as faker from 'faker';
 
 import Guardian from './Guardian';
+import IntakeForm from './IntakeForm';
+import Listing from './Listing';
 
 function formatDate(date) {
   return date.toISOString().substr(0, 10);
@@ -27,13 +29,11 @@ export default class Youth {
 
   generateIntakeData() {
     const intakeForm = new IntakeForm(this);
+    this.petitions = [...(this.petitions || []), ...intakeForm.petitions];
+    this.chargeIDs = this.chargeIDs || [];
 
-    this.petitions = [...this.petitions, ...intakeForm.petitions];
-
-    intakeForm.petitions.forEach(({ charges }) => {
-      charges.forEach(({ chargeID }) => {
-        this.chargeIDs.push(chargeID);
-      });
+    intakeForm.charges.forEach(({ chargeID }) => {
+      this.chargeIDs.push(chargeID);
     });
 
     this.nextListingDate = intakeForm.initialHearingDate;
@@ -48,14 +48,7 @@ export default class Youth {
 
       this.nextListingDate = listing.nextListingDate;
       this.nextListingLocation = listing.nextListingLocation;
-      this.legalStatusEvents = [
-        ...this.legalStatusEvents,
-        ...listing.legalStatusEvents,
-      ];
-      this.courtOrders = [
-        ...this.legalStatusEvents,
-        ...listing.legalStatusEvents,
-      ];
+      this.courtOrders = [...(this.courtOrders || []), ...listing.courtOrders];
 
       return listing;
     });
