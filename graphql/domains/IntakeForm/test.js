@@ -1,6 +1,9 @@
 import { createTestClient } from 'apollo-server-testing';
 import { insertIntakeForm, intakeFormQuery, response } from './test-data';
 import createServer from '../../../server/create-graphql-server';
+import { clearDB } from '../../../server/utilities';
+
+beforeAll(async () => await clearDB());
 
 describe('mutation insertIntakeForm', () => {
   it('should create an intake form', async () => {

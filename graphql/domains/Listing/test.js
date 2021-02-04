@@ -1,6 +1,9 @@
 import { createTestClient } from 'apollo-server-testing';
 import { insertListing, listingQuery, response } from './test-data';
 import createServer from '../../../server/create-graphql-server';
+import { clearDB } from '../../../server/utilities';
+
+beforeAll(async () => await clearDB());
 
 describe('mutation insertListing', () => {
   it('should create a listing', async () => {
