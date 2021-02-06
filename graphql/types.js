@@ -1,5 +1,7 @@
 import { mergeTypeDefs } from 'graphql-tools';
 
+import SeedTypes from './dev/seed/types';
+
 import AdjudicationTypes from './domains/Adjudication/types';
 import AdmissionTypes from './domains/Admission/types';
 import ArrestTypes from './domains/Arrest/types';
@@ -41,5 +43,9 @@ const typeDefs = [
   ...VictimTypes,
   ...YouthTypes,
 ];
+
+if (process.env.NODE_ENV !== 'production') {
+  typeDefs.push(SeedTypes);
+}
 
 export default mergeTypeDefs(typeDefs, { all: true });
