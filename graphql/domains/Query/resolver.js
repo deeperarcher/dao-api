@@ -7,17 +7,21 @@ import {
 
 export default {
   Query: {
-    arrestsByGunInvolvement: async (_, { isGunInvolvedArrest }) => {
+    arrestsByGunInvolvementCsv: async (_, { isGunInvolvedArrest }) => {
       const intakeForms = await getIntakeForms(_, { isGunInvolvedArrest });
       const listingsByPID = await getListingsByPID(intakeForms);
 
-      return intakeForms.map(({ arrest, youth }) => ({
-        ...arrest,
-        youth: {
-          ...youth,
-          listings: listingsByPID[youth.PID] || [],
-        },
-      }));
+      const csvRows = [`district,PID,nextCourtroom,nextCourtDate`];
+
+      intakeForms.forEach(({ arrest, youth }) =>
+        listingsByPID[youth.PID].forEach(({ nextListing }) =>
+          csvRows.push(
+            `${arrest.district},${youth.PID},${nextListing.courtroom.name},${nextListing.date}`
+          )
+        )
+      );
+
+      return csvRows.join('\n');
     },
     intakeForm: getOneIntakeForm,
     intakeForms: getIntakeForms,

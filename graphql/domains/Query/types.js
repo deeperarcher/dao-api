@@ -1,6 +1,6 @@
 const Query = `
   type Query {
-    arrestsByGunInvolvement(isGunInvolvedArrest: Boolean): [Arrest]!
+    arrestsByGunInvolvementCsv(isGunInvolvedArrest: Boolean): String!
     intakeForm(_id: String!): IntakeForm!
     intakeForms(PID: String): [IntakeForm]!
     listing(_id: String!): Listing!
