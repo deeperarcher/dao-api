@@ -8,22 +8,25 @@ import {
 export default {
   Query: {
     arrestsByGunInvolvementCsv: async (_, { isGunInvolvedArrest }) => {
-      const intakeForms = await getIntakeForms(_, { isGunInvolvedArrest });
-      const listingsByPID = await getListingsByPID(intakeForms);
+      const csvHeader = `district,PID,nextCourtroom,nextCourtDate`;
+      const csvRows = [csvHeader];
 
-      const csvRows = [`district,PID,nextCourtroom,nextCourtDate`];
-      intakeForms &&
-        intakeForms.forEach(({ arrest, youth }) => {
-          console.log(listingsByPID[youth.PID]);
-          listingsByPID[youth.PID] &&
-            listingsByPID[youth.PID].forEach(({ nextListing }) =>
+      return await getListingsByPID({ isGunInvolvedArrest })
+        .then(listingsByPID => {
+          Object.entries(listingsByPID).forEach(async ([PID, listings]) => {
+            const { arrest } = await getOneIntakeForm(_, {
+              isGunInvolvedArrest,
+              PID,
+            });
+
+            listings.forEach(({ nextListing }) => {
               csvRows.push(
-                `${arrest.district},${youth.PID},${nextListing.courtroom.name},${nextListing.date}`
-              )
-            );
-        });
-
-      return csvRows.join('\n');
+                `${arrest.district},${PID},${nextListing.courtroom.name},${nextListing.date}`
+              );
+            });
+          });
+        })
+        .then(() => csvRows.join('\n'));
     },
     intakeForm: getOneIntakeForm,
     intakeForms: getIntakeForms,
