@@ -1,3 +1,21 @@
+const Mutation = `
+  type Mutation {
+    """
+    Quick data generator
+    """
+    clear: SeedResult!
+    seed(input: SeedInput): SeedResult!
+  }
+`;
+
+const SeedInput = `
+  input SeedInput {
+    numberOfIntakesPerYouth: Int
+    numberOfListingsPerYouth: Int
+    numberOfYouths: Int
+  }
+`;
+
 const SeedResult = `
   type SeedResult {
     intakeForms: [IntakeForm!]!
@@ -5,18 +23,4 @@ const SeedResult = `
   }
 `;
 
-const Mutation = `
-  type Mutation {
-    """
-    Quick data generator
-    """
-    seed(
-      numberOfIntakesEach: Int
-      numberOfListingsEach: Int
-      numberOfYouths: Int
-      shouldClearFirst: Boolean
-    ): SeedResult!
-  }
-`;
-
-export default [Mutation, SeedResult];
+export default [Mutation, SeedInput, SeedResult];

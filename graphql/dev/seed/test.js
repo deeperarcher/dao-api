@@ -10,8 +10,8 @@ describe('mutation seed', () => {
     const mutation = `
       mutation {
         seed(
-          numberOfIntakesEach: 1
-          numberOfListingsEach: 1
+          numberOfIntakesPerYouth: 1
+          numberOfListingsPerYouth: 1
           numberOfYouths: 1
           shouldClearFirst: false
         ) {

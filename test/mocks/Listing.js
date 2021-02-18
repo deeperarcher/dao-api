@@ -6,14 +6,14 @@ import CourtDate from './CourtDate';
 import { intoArray } from './utilities';
 
 export default class Listing {
-  constructor({ intakeForm, youth }) {
-    const chargeIDs = intakeForm.charges.map(({ ID }) => ID) || [
-      faker.random.number(10000).toString(),
-    ];
+  constructor({ intakeForms, youth }) {
+    const chargeIDs = intakeForms
+      .map(({ charges }) => charges)
+      .map(({ ID }) => ID);
+    const petitionNumbers = intakeForms
+      .map(({ petitions }) => petitions)
+      .map(({ petitionNumber }) => petitionNumber);
     const courtDate = new CourtDate();
-    const petitionNumbers = intakeForm.petitions.map(
-      ({ petitionNumber }) => petitionNumber
-    ) || [faker.random.number(10000).toString()];
 
     this.adjudications = [
       {

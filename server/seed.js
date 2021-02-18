@@ -11,7 +11,5 @@ mongoose
   })
   .then(() => console.log('Clearing data...'))
   .then(async () => clearDB())
-  .then(() => console.log('Generating seed data...'))
-  .then(async () => seedDB())
-  .then(() => console.log('DB seed complete!'))
-  .catch(err => console.log(err));
+  .then(() => console.log('Clear complete!'))
+  .catch(err => console.error(err));

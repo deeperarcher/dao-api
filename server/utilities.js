@@ -6,16 +6,21 @@ import ListingMock from '../test/mocks/Listing';
 import YouthMock from '../test/mocks/Youth';
 
 export async function clearDB() {
-  return Promise.all([
+  Promise.all([
     IntakeForm.deleteMany({}).exec(),
     Listing.deleteMany({}).exec(),
   ]);
+
+  return {
+    intakeForms: [],
+    listings: [],
+  };
 }
 
 export async function seedDB(
-  { numberOfIntakesEach, numberOfListingsEach, numberOfYouths } = {
-    numberOfIntakesEach: 2,
-    numberOfListingsEach: 5,
+  { numberOfIntakesPerYouth, numberOfListingsPerYouth, numberOfYouths } = {
+    numberOfIntakesPerYouth: 1,
+    numberOfListingsPerYouth: 3,
     numberOfYouths: 1,
   }
 ) {
@@ -24,16 +29,19 @@ export async function seedDB(
 
   new Array(numberOfYouths).fill().forEach(async () => {
     const youth = new YouthMock();
+    const youthIntakeForms = [];
 
-    new Array(numberOfIntakesEach).fill().forEach(async () => {
-      const intakeForm = await new IntakeFormMock({ youth });
-      intakeForms.push(intakeForm);
-
-      new Array(numberOfListingsEach).fill().forEach(async () => {
-        const listing = await new ListingMock({ intakeForm, youth });
-        listings.push(listing);
-      });
+    new Array(numberOfIntakesPerYouth).fill().forEach(async () => {
+      const intakeForm = new IntakeFormMock({ youth });
+      youthIntakeForms.push(intakeForm);
     });
+
+    new Array(numberOfListingsPerYouth).fill().forEach(async () => {
+      const listing = new ListingMock({ intakeForms: youthIntakeForms, youth });
+      listings.push(listing);
+    });
+
+    youthIntakeForms.forEach(form => intakeForms.push(form));
   });
 
   return {

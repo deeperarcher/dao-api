@@ -1,7 +1,10 @@
 import IntakeForm from '../server/models/IntakeForm';
 import Listing from '../server/models/Listing';
 
-export async function getIntakeForms(_, { isGunInvolvedArrest, PID }) {
+export async function getIntakeForms(
+  _,
+  { isGunInvolvedArrest, PID } = { isGunInvolvedArrest: false, PID: null }
+) {
   let response;
   let query = IntakeForm.find({});
 
@@ -9,9 +12,16 @@ export async function getIntakeForms(_, { isGunInvolvedArrest, PID }) {
     query = IntakeForm.find({
       'youth.PID': PID,
     });
-  } else if (typeof isGunInvolvedArrest === 'boolean') {
+  }
+  if (isGunInvolvedArrest && typeof isGunInvolvedArrest === 'boolean') {
     query = IntakeForm.find({
       'arrest.isGunInvolvedArrest': isGunInvolvedArrest,
+    });
+  }
+  if (PID && isGunInvolvedArrest && typeof isGunInvolvedArrest === 'boolean') {
+    query = IntakeForm.find({
+      'arrest.isGunInvolvedArrest': isGunInvolvedArrest,
+      'youth.PID': PID,
     });
   }
 
@@ -23,7 +33,10 @@ export async function getIntakeForms(_, { isGunInvolvedArrest, PID }) {
   return response;
 }
 
-export async function getOneIntakeForm(_, { PID, _id }) {
+export async function getOneIntakeForm(
+  _,
+  { PID, _id } = { PID: null, _id: null }
+) {
   let response;
   const query = IntakeForm.find({});
 
@@ -42,7 +55,7 @@ export async function getOneIntakeForm(_, { PID, _id }) {
   return response;
 }
 
-export async function getListings(_, { PID }) {
+export async function getListings(_, { PID } = { PID: null }) {
   let response;
   let query = Listing.find({});
 
@@ -59,7 +72,8 @@ export async function getListings(_, { PID }) {
   return response;
 }
 
-export async function getListingsByPID(intakeForms) {
+export async function getListingsByPID({ isGunInvolvedArrest }) {
+  const intakeForms = await getIntakeForms(null, { isGunInvolvedArrest });
   return await intakeForms.reduce(async (acc, intakeForm) => {
     const PID = intakeForm.youth.PID;
     const currentListingsAtPID = acc[PID];
