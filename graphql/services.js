@@ -20,7 +20,6 @@ export async function getIntakeForms(_, { isGunInvolvedArrest, PID }) {
   } catch (err) {
     console.error('IntakeForm get fail:', err);
   }
-
   return response;
 }
 
@@ -79,14 +78,16 @@ export async function getListingsByPID(intakeForms) {
 export async function insertIntakeForm(_, { input }) {
   const {
     youth: { PID },
-  } = await new IntakeForm(input).save().catch(err => console.log('ERR', err));
+  } = await new IntakeForm(input)
+    .save()
+    .catch(err => console.error('ERR', err));
   return PID;
 }
 
 export async function insertListing(_, { input }) {
   const { PID } = await new Listing(input)
     .save()
-    .catch(err => console.log('ERR', err));
+    .catch(err => console.error('ERR', err));
 
   return PID;
 }

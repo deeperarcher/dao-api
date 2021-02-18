@@ -11,6 +11,7 @@ export async function clearDB() {
     Listing.deleteMany({}).exec(),
   ]);
 }
+
 export async function seedDB(
   { numberOfIntakesEach, numberOfListingsEach, numberOfYouths } = {
     numberOfIntakesEach: 2,
