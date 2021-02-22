@@ -1,0 +1,53 @@
+{
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": ["eslint:recommended", "plugin:jest/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["import"],
+
+  "rules": {
+    "import/order": [
+      "error",
+      {
+        "alphabetize": { "order": "asc" },
+        "newlines-between": "always"
+      }
+    ],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": ["const", "let"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let"],
+        "next": ["const", "let"]
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "class"
+      },
+      {
+        "blankLine": "always",
+        "prev": "class",
+        "next": "*"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "multiline-block-like"
+      },
+      {
+        "blankLine": "always",
+        "prev": "multiline-expression",
+        "next": "*"
+      },
+      { "blankLine": "always", "prev": "*", "next": "return" }
+    ],
+    "sort-keys": "error"
+  }
+}
