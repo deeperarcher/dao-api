@@ -1,34 +1,38 @@
 import { createTestClient } from 'apollo-server-testing';
 import createServer from '../../../server/create-graphql-server';
+import { clearDB } from '../../../server/utilities';
+
+beforeAll(async () => await clearDB());
 
 describe('mutation seed', () => {
-  it('should return true', async () => {
+  it('should return intakeForms and listings', async () => {
     const { mutate } = createTestClient(createServer());
     const mutation = `
       mutation {
         seed(
           input: {
-            youthCount: 1
-            intakesPerYouth: 1
-            listingsPerYouth: 1
-            shouldClearFirst: false
+            numberOfIntakesPerYouth: 1
+            numberOfListingsPerYouth: 1
+            numberOfYouths: 1
           }
         ) {
-          IntakeForms {
-            ID
+          intakeForms {
+            youth {
+              PID
+            }
           }
-
-          Listings {
-            ID
+          listings {
+            PID
           }
         }
-      }`;
-    const { data, errors } = await mutate({ mutation });
+      }
+    `;
 
+    const { data, errors } = await mutate({ mutation });
     expect(errors).toEqual(undefined);
-    expect(data.seed.IntakeForms.length).toEqual(1);
-    expect(typeof data.seed.IntakeForms[0].ID).toBe('string');
-    expect(data.seed.Listings.length).toEqual(1);
-    expect(typeof data.seed.Listings[0].ID).toBe('string');
+    expect(data.seed.intakeForms.length).toEqual(1);
+    expect(data.seed.listings.length).toEqual(1);
+    expect(typeof data.seed.intakeForms[0].youth.PID).toBe('string');
+    expect(typeof data.seed.listings[0].PID).toBe('string');
   });
 });

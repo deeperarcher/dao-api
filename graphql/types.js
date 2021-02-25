@@ -18,6 +18,7 @@ import IntakeFormTypes from './domains/IntakeForm/types';
 import LegalStatusEventTypes from './domains/LegalStatusEvent/types';
 import ListingTypes from './domains/Listing/types';
 import PetitionTypes from './domains/Petition/types';
+import QueryTypes from './domains/Query/types';
 import ServiceProviderTypes from './domains/ServiceProvider/types';
 import VictimTypes from './domains/Victim/types';
 import YouthTypes from './domains/Youth/types';
@@ -39,6 +40,7 @@ const typeDefs = [
   ...LegalStatusEventTypes,
   ...ListingTypes,
   ...PetitionTypes,
+  ...QueryTypes,
   ...ServiceProviderTypes,
   ...VictimTypes,
   ...YouthTypes,

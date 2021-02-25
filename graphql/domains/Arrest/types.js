@@ -19,13 +19,13 @@ const ArrestInput = `
     date: String
     district: String
     incidentIDs: [String]!
-    intakeFormID: String!
     isGunCase: Boolean
     isGunInvolvedArrest: Boolean
     officers: [String]!
     petitionNumbers: [String]!
     referralDate: String
     SID: String
-  }`;
+  }
+`;
 
 export default [Arrest, ArrestInput];

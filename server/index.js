@@ -14,7 +14,7 @@ mongoose
     useNewUrlParser: true,
   })
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));
 
 const app = express();
 const server = createServer();

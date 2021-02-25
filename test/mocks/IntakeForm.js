@@ -1,5 +1,7 @@
 import * as faker from 'faker';
 
+import IntakeFormModel from '../../server/models/IntakeForm';
+
 import Arrest from './Arrest';
 import CourtDate from './CourtDate';
 import Charge from './Charge';
@@ -9,10 +11,8 @@ import Youth from './Youth';
 import { formatDate, intoArray } from './utilities';
 
 export default class IntakeForm {
-  constructor() {
+  constructor({ youth }) {
     const petitionNumber = faker.random.number(10000).toString();
-    const youth = new Youth();
-
     const incidentAddress = faker.address.streetAddress();
     const incidentDate = formatDate(faker.date.recent());
     const incidentID = (
@@ -27,7 +27,6 @@ export default class IntakeForm {
     this.charges = intoArray(3, (_, i) => new Charge(i === 0, petitionNumber));
     this.courtOrders = [];
     this.DA = faker.name.lastName();
-    this.ID = faker.random.number(10000).toString();
     this.incident = new Incident({
       incidentAddress,
       incidentDate,
@@ -43,7 +42,9 @@ export default class IntakeForm {
         lastName: faker.name.lastName(),
       },
     ];
-    this.youth = youth;
+    this.youth = youth || new Youth();
+
+    IntakeFormModel.create(this);
 
     // TODO: flesh out these domains in gql
     // CALL-IN

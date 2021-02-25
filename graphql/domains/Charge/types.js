@@ -19,7 +19,6 @@ const ChargeInput = `
     code: String
     grade: String
     ID: String!
-    intakeFormID: String!
     isLead: Boolean
     name: String
     petitionNumber: String!

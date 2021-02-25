@@ -11,9 +11,7 @@ const CourtDateInput = `
   input CourtDateInput {
     courtroom: CourtroomInput!
     date: String
-    intakeFormID: String
-    listingID: String
   }
-`; // TODO: collapse into one form ID?
+`;
 
 export default [CourtDate, CourtDateInput];

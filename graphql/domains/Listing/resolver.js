@@ -1,10 +1,7 @@
-import { getListings, insertListing } from './services';
+import { insertListing } from '../../services';
 
 export default {
-  Query: {
-    listings: getListings,
-  },
   Mutation: {
-    insertListing: insertListing,
+    insertListing: (_, args) => insertListing(args),
   },
 };

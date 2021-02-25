@@ -25,7 +25,6 @@ const PetitionInput = `
     dateFiled: String!
     DCNum: String
     incidentID: String!
-    intakeFormID: String!,
     isDirectFiled: Boolean
     isDiverted: Boolean
     isTransferFromOtherCounty: Boolean
