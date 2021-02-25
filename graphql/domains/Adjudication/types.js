@@ -11,7 +11,6 @@ const AdjudicationInput = `
   input AdjudicationInput {
     chargeIDs: [String]!
     date: String!
-    listingID: String!
     reasons: [String]!
   }
 `;

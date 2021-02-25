@@ -13,7 +13,6 @@ const ContinuanceInput = `
   input ContinuanceInput {
     continuanceType: String!
     date: String!
-    listingID: String!
     listingStatus: String!
     petitionNumbers: [String!]!
     reasons: [String]!

@@ -37,7 +37,6 @@ const IntakeFormSchema = new Schema({
     },
   ],
   DA: String,
-  ID: { required: true, type: String, unique: true },
   // Incident: 1+ petitions, therefore 0+ victims
   incidents: [
     {
@@ -93,7 +92,7 @@ const IntakeFormSchema = new Schema({
     isLatino: Boolean,
     lastName: { required: true, type: String },
     phoneNumber: Number,
-    PID: { required: true, type: Number },
+    PID: { required: true, type: String },
     race: String,
     school: String,
     sex: String,

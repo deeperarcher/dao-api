@@ -50,7 +50,6 @@ const input = {
     date: '1603354380000',
     district: '13',
     incidentIDs: [],
-    intakeFormID: 'testintakeform1',
     isGunCase: true,
     isGunInvolvedArrest: true,
     officers: ['12452415', '15623452'],
@@ -64,7 +63,6 @@ const input = {
       code: 'a',
       grade: 'a',
       ID: 'charge1',
-      intakeFormID: 'testintakeform1',
       isLead: true,
       name: 'the charge',
       petitionNumber: '1742561',
@@ -72,7 +70,6 @@ const input = {
   ],
   courtOrders: [],
   DA: 'Sternamin',
-  ID: 'testintakeform1',
   incidents: [
     {
       address: '124 Streetsville Rd.',
@@ -80,7 +77,6 @@ const input = {
       district: '12',
       ID: '124STREETS1603324800000',
       incidentType: 'School',
-      intakeFormID: 'testintakeform1',
       isTimeKnown: true,
       petitionNumber: '1742561',
       zip: '19148-1234',
@@ -93,7 +89,6 @@ const input = {
       incidentID: '124STREETS1603324800000',
       isDirectFiled: false,
       isDiverted: true,
-      intakeFormID: 'testintakeform1',
       isTransferFromOtherCounty: false,
       petitionNumber: '1742561',
     },
@@ -103,14 +98,12 @@ const input = {
     courtroom: {
       name: '3E',
     },
-    intakeFormID: 'testintakeform1',
   },
   note: 'test note',
   victims: [
     {
       firstName: 'Firstname',
       incidentIDs: ['124STREETS1603324800000'],
-      intakeFormID: 'testintakeform1',
       petitionNumber: '1742561',
       lastName: 'Doe',
     },
@@ -123,22 +116,19 @@ const input = {
     guardians: [
       {
         firstName: 'MyGuard1F',
-        intakeFormID: 'testintakeform1',
         lastName: 'MyGuard1L',
         relation: 'Mother',
       },
       {
         firstName: 'MyGuard2F',
-        intakeFormID: 'testintakeform1',
         lastName: 'MyGuard2L',
         relation: 'Mother',
       },
     ],
     isLatino: false,
-    intakeFormID: 'testintakeform1',
     lastName: 'Mylast',
     phoneNumber: '7703620427',
-    PID: 1,
+    PID: '1234',
     race: 'African American',
     school: 'South Philadelphia HS',
     sex: 'Male',
@@ -175,7 +165,7 @@ export const response = [
     youth: {
       firstName: 'Myfirst',
       guardians: [{ firstName: 'MyGuard1F' }, { firstName: 'MyGuard2F' }],
-      PID: 1,
+      PID: '1234',
     },
     victims: [
       {

@@ -12,7 +12,7 @@ const Youth = `
     lastName: String!
     listings: [Listing]!
     phoneNumber: String
-    PID: Int!
+    PID: String!
     race: String
     school: String
     sex: String
@@ -27,11 +27,10 @@ const YouthInput = `
     firstName: String!
     grade: String
     guardians: [GuardianInput]!
-    intakeFormID: String!
     isLatino: Boolean
     lastName: String!
     phoneNumber: String
-    PID: Int!
+    PID: String!
     race: String
     school: String
     sex: String
@@ -39,11 +38,4 @@ const YouthInput = `
   }
 `;
 
-const Query = `
-  type Query {
-    youth(PID: Int!): Youth!
-    youths: [Youth]!
-  }
-`;
-
-export default [Youth, YouthInput, Query];
+export default [Youth, YouthInput];

@@ -9,7 +9,6 @@ const Certification = `
 const CertificationInput = `
   input CertificationInput {
     date: String!
-    listingID: String!
     petitionNumbers: [String]!
   }
 `;

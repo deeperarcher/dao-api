@@ -8,13 +8,12 @@ const Listing = `
     continuances: [Continuance]!
     courtDate: CourtDate!
     courtOrders: [CourtOrder]!
-    ID: String!
-    intakeForm: IntakeForm!
     DA: String!
     legalStatusEvents: [LegalStatusEvent]!
     listingType: String
     nextListing: CourtDate!
     note: String
+    PID: String!
 }`;
 
 const ListingInput = `
@@ -28,12 +27,12 @@ const ListingInput = `
     courtOrders: [CourtOrderInput]
     courtDate: CourtDateInput!
     DA: String
-    ID: String!
     legalStatusEvents: [LegalStatusEventInput]
     listingType: String
     nextListing: CourtDateInput!
     note: String
     petitionNumbers: [String!]!
+    PID: String!
   }
 `;
 
@@ -43,11 +42,4 @@ const Mutation = `
   }
 `;
 
-const Query = `
-  type Query {
-    listing(_id: String!): Listing!
-    listings(PID: String): [Listing]!
-  }
-`;
-
-export default [Listing, ListingInput, Mutation, Query];
+export default [Listing, ListingInput, Mutation];
