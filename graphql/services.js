@@ -67,23 +67,6 @@ export async function getListings({ PID } = { PID: null }) {
   return response;
 }
 
-export async function getListingsByPID({ isGunInvolvedArrest }) {
-  const intakeForms = await getIntakeForms({ isGunInvolvedArrest });
-  return await intakeForms.reduce(async (acc, intakeForm) => {
-    const PID = intakeForm.youth.PID;
-    const currentListingsAtPID = acc[PID];
-
-    if (currentListingsAtPID) return acc;
-    const newListingsAtPID = await getListings({ PID });
-    const payload = {
-      ...acc,
-      [PID]: newListingsAtPID,
-    };
-
-    return payload;
-  }, {});
-}
-
 export async function getYouths(args) {
   const intakeForms = await getIntakeForms(args);
   const youthsByPID = intakeForms.reduce(
