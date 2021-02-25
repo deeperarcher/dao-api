@@ -3,6 +3,7 @@ import {
   getListings,
   getListingsByPID,
   getOneIntakeForm,
+  getYouths,
 } from '../../services';
 
 export default {
@@ -32,12 +33,8 @@ export default {
     intakeForms: getIntakeForms,
     listings: getListings,
     youth: async (_, { PID } = { PID: null }) => {
-      return await getIntakeForms({ PID }).then(forms => forms[0].youth);
+      return await getIntakeForms(_, { PID }).then(forms => forms[0].youth);
     },
-    youths: async () => {
-      return await getIntakeForms().then(forms =>
-        forms.map(({ youth }) => youth)
-      );
-    },
+    youths: getYouths,
   },
 };

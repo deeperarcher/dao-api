@@ -9,7 +9,7 @@ export function fromList(list) {
 }
 
 export function intoArray(max, body) {
-  return new Array(faker.random.number(max - 1) + 2)
+  return new Array(faker.random.number(max - 1) + 1)
     .fill()
     .map(typeof body === 'function' ? body : () => body);
 }

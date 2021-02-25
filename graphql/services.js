@@ -1,6 +1,25 @@
 import IntakeForm from '../server/models/IntakeForm';
 import Listing from '../server/models/Listing';
 
+export async function getYouths() {
+  const intakeForms = await getIntakeForms(null, {});
+  const youthsByPID = intakeForms.reduce(
+    (acc, form) =>
+      acc[form.youth.PID]
+        ? {
+            ...acc,
+            [form.youth.PID]: {
+              ...form.youth,
+              intakeForms: [...acc[form.youth.PID].intakeForms, form],
+            },
+          }
+        : { ...acc, [form.youth.PID]: { ...form.youth, intakeForms: [form] } },
+    {}
+  );
+
+  return Object.values(youthsByPID);
+}
+
 export async function getIntakeForms(
   _,
   { isGunInvolvedArrest, PID } = { isGunInvolvedArrest: false, PID: null }
@@ -24,7 +43,6 @@ export async function getIntakeForms(
       'youth.PID': PID,
     });
   }
-
   try {
     response = await query.exec();
   } catch (err) {
@@ -84,7 +102,7 @@ export async function getListingsByPID({ isGunInvolvedArrest }) {
       ...acc,
       [PID]: newListingsAtPID,
     };
-
+    console.log('label', payload)
     return payload;
   }, {});
 }

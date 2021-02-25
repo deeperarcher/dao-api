@@ -8,6 +8,7 @@ const Incident = `
     intakeForm: IntakeForm!
     isTimeKnown: Boolean
     petition: Petition!
+    petitionNumber: String!
     victims: [Victim]!
     zip: String
   }

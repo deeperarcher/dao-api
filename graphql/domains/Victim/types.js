@@ -1,10 +1,12 @@
 const Victim = `
   type Victim {
     firstName: String!
+    incidentIDs: [String]!
     incidents: [Incident]!
     intakeForm: [IntakeForm]!
     lastName: String!
     petition: Petition!
+    petitionNumber: String!
   }
 `;
 

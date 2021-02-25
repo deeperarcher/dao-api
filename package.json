@@ -10,7 +10,7 @@
     "server": "nodemon --exec babel-node server/index.js",
     "start": "npm run server",
     "start-seed": "npm run server & npm run seed",
-    "test": "jest --watch --run-in-band",
+    "test": "jest --run-in-band",
     "test:ci": "jest --run-in-band"
   },
   "contributors": [

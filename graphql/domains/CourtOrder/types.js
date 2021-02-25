@@ -5,6 +5,7 @@ const CourtOrder = `
     listing: Listing!
     order: String!
     petition: Petition!
+    petitionNumbers: [String]
     reasons: [String]
     serviceProvider: ServiceProvider
   }
