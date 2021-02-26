@@ -67,6 +67,16 @@ export async function getListings({ PID } = { PID: null }) {
   return response;
 }
 
+export async function getYouth(args) {
+  const intakeForms = await getIntakeForms(args);
+  const listings = await getListings(args);
+  return {
+    intakeForms,
+    listings,
+    ...intakeForms[0]?.youth,
+  };
+}
+
 export async function getYouths(args) {
   const intakeForms = await getIntakeForms(args);
   const youthsByPID = intakeForms.reduce(
@@ -82,6 +92,13 @@ export async function getYouths(args) {
         : { ...acc, [form.youth.PID]: { ...form.youth, intakeForms: [form] } },
     {}
   );
+
+  const listings = await getListings(args);
+  listings.map(listing => {
+    youthsByPID[listing.PID].listings
+      ? youthsByPID[listing.PID].listings.push(listing)
+      : (youthsByPID[listing.PID].listings = [listing]);
+  });
 
   return Object.values(youthsByPID);
 }
