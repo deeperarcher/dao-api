@@ -3,93 +3,15 @@ const apiProps = `
   firstName
   lastName
   PID
-  incidents {
-    incidentDate
-    incidentID
-    isIncidentTimeKnown
-    incidentAddress
-    incidentZip
-    incidentDistrict
-    incidentType
-  }
-  arrests {
-    arrestDate
-    arrestingDistrict
-    isGunCase
-    isGunInvolvedArrest
-    officers
-    referralDate
-    SID
-  }
 
-  petitions {
-    petitionNumber
-    dateFiled
-    DCNum
-    incidentID
-    isDirectFiled
-    isDiverted
-    isTransferFromOtherCounty
-    victimFirstName
-    victimLastName
-    charges {
-      category
-      code
-      grade
-      ID
-      isLead
-      name
-    }
-  }
-
-  adjudications {
-    chargeIDs
-    date
-    reasons
-  }
-
-  admissions {
-    chargeIDs
-    date
-    result
-  }
-
-  certifications {
-    date
-    petitionNumbers
-  }
-
-  continuances {
-    date
-    listingStatus
-    petitionNumbers
-    reasons
-  }
-
-  courtOrders {
-    courtOrderType
-    isSupervision
-    order
-    petitionNumbers
-    serviceProvider
-    reasons
-  }
-
-  legalStatusEvents {
-    date
-    dischargeNature
-    dischargeOutcome
-    eventType
-    petitionNumbers
-    reasons
-    status
+  intakeForms {
+    DA
+    note
   }
 
   listings {
-    courtroom
-    date
     DA
-    notes
+    note
   }
 `;
 
