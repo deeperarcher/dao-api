@@ -67,6 +67,15 @@ export async function getListings({ PID } = { PID: null }) {
   return response;
 }
 
+export async function getYouth(args) {
+  const intakeForms = await getIntakeForms(args);
+
+  return {
+    intakeForms,
+    ...intakeForms[0].youth,
+  };
+}
+
 export async function getYouths(args) {
   const intakeForms = await getIntakeForms(args);
   const youthsByPID = intakeForms.reduce(
