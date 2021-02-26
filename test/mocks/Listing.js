@@ -79,7 +79,8 @@ export default class Listing {
     this.nextListing = new CourtDate();
     this.note = faker.lorem.words(20);
     this.PID = (youth && youth.PID) || faker.random.number(10000).toString();
-
-    ListingModel.create(this);
+  }
+  async save() {
+    await ListingModel.create(this);
   }
 }

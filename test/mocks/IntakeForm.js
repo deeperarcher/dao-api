@@ -44,8 +44,6 @@ export default class IntakeForm {
     ];
     this.youth = youth || new Youth();
 
-    IntakeFormModel.create(this);
-
     // TODO: flesh out these domains in gql
     // CALL-IN
     // this.callInDate = formatDate(faker.date.recent());
@@ -69,5 +67,8 @@ export default class IntakeForm {
     // this.intakeConferenceDate = formatDate(faker.date.recent());
     // this.intakeConferenceOutcome = fromList(LIST.IntakeConferenceOutcome);
     // this.intakeConferenceType = fromList(LIST.IntakeConferenceType);
+  }
+  async save() {
+    await IntakeFormModel.create(this);
   }
 }

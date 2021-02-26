@@ -6,7 +6,7 @@ import ListingMock from '../test/mocks/Listing';
 import YouthMock from '../test/mocks/Youth';
 
 export async function clearDB() {
-  Promise.all([
+  await Promise.all([
     IntakeForm.deleteMany({}).exec(),
     Listing.deleteMany({}).exec(),
   ]);
