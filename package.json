@@ -6,7 +6,8 @@
   "scripts": {
     "format": "prettier --write \"**/*.js\"",
     "format:ci": "prettier --list-different \"**/*.js\"",
-    "lint": "eslint ./",
+    "lint": "eslint ./ --fix",
+    "lint:ci": "eslint ./",
     "seed": "babel-node server/seed.js",
     "server": "nodemon --exec babel-node server/index.js",
     "start": "npm run server",

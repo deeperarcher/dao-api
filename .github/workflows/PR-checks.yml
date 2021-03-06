@@ -4,7 +4,7 @@ on:
 
 jobs:
   code-checks:
-    name: Format & Test
+    name: Format, Lint, & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -24,8 +24,11 @@ jobs:
       - name: Install Node Modules
         run: yarn
 
-      - name: Run Formatter
+      - name: Run Format Check
         run: yarn run format:ci
+
+      - name: Run Lint Check
+        run: yarn run lint:ci
 
       - name: Run Test Suite
         run: yarn run test:ci
