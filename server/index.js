@@ -1,7 +1,7 @@
 require('dotenv').config();
 
-import mongoose from 'mongoose';
 import express from 'express';
+import mongoose from 'mongoose';
 
 import createServer from './create-graphql-server';
 

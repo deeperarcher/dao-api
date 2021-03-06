@@ -1,7 +1,9 @@
 import { createTestClient } from 'apollo-server-testing';
-import { insertListing, listingQuery, response } from './test-data';
+
 import createServer from '../../../server/create-graphql-server';
 import { clearDB } from '../../../server/utilities';
+
+import { insertListing, listingQuery, response } from './test-data';
 
 beforeAll(async () => await clearDB());
 

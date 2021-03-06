@@ -11,6 +11,7 @@ export default class Arrest {
     this.officers = intoArray(3, () =>
       (faker.random.number(89999) + 10000).toString()
     ); // payroll #
+
     this.referralDate = formatDate(faker.date.recent());
     this.SID = (faker.random.number(89999) + 10000).toString();
   }

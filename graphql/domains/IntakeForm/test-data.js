@@ -82,6 +82,13 @@ const input = {
       zip: '19148-1234',
     },
   ],
+  initialHearing: {
+    courtroom: {
+      name: '3E',
+    },
+    date: '2020-11-05',
+  },
+  note: 'test note',
   petitions: [
     {
       dateFiled: '1603324800000',
@@ -93,19 +100,12 @@ const input = {
       petitionNumber: '1742561',
     },
   ],
-  initialHearing: {
-    date: '2020-11-05',
-    courtroom: {
-      name: '3E',
-    },
-  },
-  note: 'test note',
   victims: [
     {
       firstName: 'Firstname',
       incidentIDs: ['124STREETS1603324800000'],
-      petitionNumber: '1742561',
       lastName: 'Doe',
+      petitionNumber: '1742561',
     },
   ],
   youth: {
@@ -162,16 +162,16 @@ export const response = [
         petitionNumber: '1742561',
       },
     ],
-    youth: {
-      firstName: 'Myfirst',
-      guardians: [{ firstName: 'MyGuard1F' }, { firstName: 'MyGuard2F' }],
-      PID: '1234',
-    },
     victims: [
       {
         lastName: 'Doe',
       },
     ],
+    youth: {
+      firstName: 'Myfirst',
+      guardians: [{ firstName: 'MyGuard1F' }, { firstName: 'MyGuard2F' }],
+      PID: '1234',
+    },
   },
 ];
 

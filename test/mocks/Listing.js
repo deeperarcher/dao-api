@@ -1,8 +1,8 @@
 import * as faker from 'faker';
+
 import ListingModel from '../../server/models/Listing';
 
 import CourtDate from './CourtDate';
-
 import { intoArray } from './utilities';
 
 export default class Listing {
@@ -22,6 +22,7 @@ export default class Listing {
         reasons: intoArray(3, () => faker.random.words(2)),
       },
     ];
+
     this.admissions = [
       {
         chargeIDs: faker.random.arrayElements(chargeIDs),
@@ -29,12 +30,14 @@ export default class Listing {
         result: faker.random.words(2),
       },
     ];
+
     this.certifications = [
       {
         date: courtDate.date,
         petitionNumbers: faker.random.arrayElements(petitionNumbers),
       },
     ];
+
     this.chargeGradeEvents = [
       {
         chargeIDs: faker.random.arrayElements(chargeIDs),
@@ -42,6 +45,7 @@ export default class Listing {
         grade: faker.random.words(2),
       },
     ];
+
     this.continuances = [
       {
         continuanceType: 'the good type',
@@ -51,6 +55,7 @@ export default class Listing {
         reasons: intoArray(3, () => faker.random.words(2)),
       },
     ];
+
     this.courtDate = courtDate;
     this.courtOrders = [
       {
@@ -63,6 +68,7 @@ export default class Listing {
         serviceProvider: faker.random.words(2),
       },
     ];
+
     this.DA = faker.name.lastName();
     this.legalStatusEvents = [
       {
@@ -75,6 +81,7 @@ export default class Listing {
         status: faker.random.words(2),
       },
     ];
+
     this.listingType = 'the good type';
     this.nextListing = new CourtDate();
     this.note = faker.lorem.words(20);

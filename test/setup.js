@@ -13,7 +13,9 @@ beforeAll(async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
+
   mongoose.Promise = Promise;
+
   for (const i in mongoose.connection.collections) {
     try {
       await mongoose.connection.collections[i].drop();

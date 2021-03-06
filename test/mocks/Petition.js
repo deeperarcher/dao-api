@@ -1,5 +1,3 @@
-import * as faker from 'faker';
-
 export default class Petition {
   constructor({ incidentID, petitionNumber }) {
     this.dateFiled = 'abc';

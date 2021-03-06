@@ -5,7 +5,6 @@ export default {
   HOME_MOTHER: { toString: () => 'Home - Mother' },
   HOME_MULTIPLE: { toString: () => 'Home - Multiple' },
   HOME_OTHER: { toString: () => 'Home - Other' },
-  HOME_OTHER: { toString: () => 'Home - Other' },
   HOME_PROPERTY: { toString: () => 'Home - Property' },
   HOME_SIBLINGS: { toString: () => 'Home - Siblings' },
   HOME_SISTER: { toString: () => 'Home - Sister' },

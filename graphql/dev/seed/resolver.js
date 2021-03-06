@@ -8,6 +8,7 @@ export default {
         return await seedDB(args);
       } catch (e) {
         console.error('seed mutation error', e);
+
         return null;
       }
     },

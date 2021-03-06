@@ -80,7 +80,10 @@ const input = {
   certifications: [],
   chargeGradeEvents: [],
   continuances: [],
-  courtDate: { date: '2014-10-12', courtroom: { name: 'CR1234' } },
+  courtDate: {
+    courtroom: { name: 'CR1234' },
+    date: '2014-10-12',
+  },
   courtOrders: [],
   DA: 'Sternamin',
   legalStatusEvents: [
@@ -94,10 +97,13 @@ const input = {
       status: 'WITHDRAWN',
     },
   ],
-  petitionNumbers: ['1742561'],
   listingType: 'a listing-y listing',
-  nextListing: { date: '2014-11-12', courtroom: { name: 'CR1234' } },
+  nextListing: {
+    courtroom: { name: 'CR1234' },
+    date: '2014-11-12',
+  },
   note: 'test note',
+  petitionNumbers: ['1742561'],
   PID: '1234',
 };
 
@@ -118,9 +124,9 @@ export const response = [
         date: '2014-10-12',
         dischargeNature: 'POSITIVE',
         dischargeOutcome: '',
+        eventType: 'DISCHARGE',
         reasons: [],
         status: 'WITHDRAWN',
-        eventType: 'DISCHARGE',
       },
     ],
     listingType: 'a listing-y listing',

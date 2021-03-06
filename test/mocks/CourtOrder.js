@@ -1,5 +1,7 @@
 import * as faker from 'faker';
+
 import LIST from '../input-lists';
+
 import { fromList, intoArray } from './utilities';
 
 export default class CourtOrder {
@@ -9,6 +11,7 @@ export default class CourtOrder {
     this.order = fromList(
       this.isSupervision ? LIST.SupervisionType : LIST.ConditionType
     );
+
     this.provider = faker.random.words(2);
     this.eventType = 'ORDERED';
     this.reasons = intoArray(3, () => faker.random.words(2));

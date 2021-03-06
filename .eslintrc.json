@@ -48,6 +48,6 @@
       },
       { "blankLine": "always", "prev": "*", "next": "return" }
     ],
-    "sort-keys": "error"
+    "sort-keys": ["error", "asc", { "caseSensitive": false }]
   }
 }

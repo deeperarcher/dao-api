@@ -1,4 +1,5 @@
 import { createTestClient } from 'apollo-server-testing';
+
 import createServer from '../../../server/create-graphql-server';
 import { clearDB } from '../../../server/utilities';
 
@@ -29,6 +30,7 @@ describe('mutation seed', () => {
     `;
 
     const { data, errors } = await mutate({ mutation });
+
     expect(errors).toEqual(undefined);
     expect(data.seed.intakeForms.length).toEqual(1);
     expect(data.seed.listings.length).toEqual(1);

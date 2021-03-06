@@ -1,7 +1,6 @@
 import { mergeResolvers } from 'graphql-tools';
 
 import SeedResolver from './dev/seed/resolver';
-
 import IntakeFormResolver from './domains/IntakeForm/resolver';
 import ListingResolver from './domains/Listing/resolver';
 import QueryResolver from './domains/Query/resolver';

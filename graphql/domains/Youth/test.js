@@ -1,19 +1,22 @@
 import { createTestClient } from 'apollo-server-testing';
-import createServer from '../../../server/create-graphql-server';
-import { youthQuery, youthsQuery } from './test-data';
 
-import Youth from '../../../test/mocks/Youth';
+import createServer from '../../../server/create-graphql-server';
 import IntakeForm from '../../../test/mocks/IntakeForm';
 import Listing from '../../../test/mocks/Listing';
+import Youth from '../../../test/mocks/Youth';
+
+import { youthQuery, youthsQuery } from './test-data';
 
 describe('query youth', () => {
   describe('with only PID argument', () => {
     it('should return all data on a youth', async () => {
       const youth = new Youth();
       const intakeForm = new IntakeForm({ youth });
+
       await intakeForm.save();
 
       const listing = new Listing({ intakeForms: [intakeForm], youth });
+
       await listing.save();
 
       const { query } = createTestClient(createServer());
@@ -36,9 +39,11 @@ describe('query youths', () => {
   it('should return all youths', async () => {
     const youth = new Youth();
     const intakeForm = new IntakeForm({ youth });
+
     await intakeForm.save();
 
     const listing = new Listing({ intakeForms: [intakeForm], youth });
+
     await listing.save();
 
     const { query } = createTestClient(createServer());

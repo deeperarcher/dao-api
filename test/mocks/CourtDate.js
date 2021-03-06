@@ -1,6 +1,7 @@
 import * as faker from 'faker';
 
 import LIST from '../input-lists';
+
 import { formatDate, fromList } from './utilities';
 
 class Courtroom {

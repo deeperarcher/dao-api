@@ -6,9 +6,11 @@ export async function getIntakeForms(
 ) {
   let response;
   let query = IntakeForm.find({});
+
   if (PID) {
     query = query.find({ 'youth.PID': PID });
   }
+
   if (typeof isGunInvolvedArrest === 'boolean') {
     query = query.find({ 'arrest.isGunInvolvedArrest': isGunInvolvedArrest });
   }
@@ -18,14 +20,15 @@ export async function getIntakeForms(
   } catch (err) {
     console.error('IntakeForm get fail:', err);
   }
+
   return response;
 }
 
 export async function getOneIntakeForm(
-  { isGunInvolvedArrest, PID, _id } = {
+  { _id, isGunInvolvedArrest, PID } = {
+    _id: null,
     isGunInvolvedArrest: null,
     PID: null,
-    _id: null,
   }
 ) {
   let response;
@@ -34,9 +37,11 @@ export async function getOneIntakeForm(
   if (_id) {
     query = query.find({ _id });
   }
+
   if (typeof isGunInvolvedArrest === 'boolean') {
     query = query.find({ 'arrest.isGunInvolvedArrest': isGunInvolvedArrest });
   }
+
   if (PID) {
     query = query.find({ 'youth.PID': PID });
   }
@@ -70,6 +75,7 @@ export async function getListings({ PID } = { PID: null }) {
 export async function getYouth(args) {
   const intakeForms = await getIntakeForms(args);
   const listings = await getListings(args);
+
   return {
     intakeForms,
     listings,
@@ -94,6 +100,7 @@ export async function getYouths(args) {
   );
 
   const listings = await getListings(args);
+
   listings.map(listing => {
     youthsByPID[listing.PID].listings
       ? youthsByPID[listing.PID].listings.push(listing)

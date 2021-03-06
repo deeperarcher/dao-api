@@ -3,8 +3,8 @@ import * as faker from 'faker';
 import IntakeFormModel from '../../server/models/IntakeForm';
 
 import Arrest from './Arrest';
-import CourtDate from './CourtDate';
 import Charge from './Charge';
+import CourtDate from './CourtDate';
 import Incident from './Incident';
 import Petition from './Petition';
 import Youth from './Youth';
@@ -33,6 +33,7 @@ export default class IntakeForm {
       incidentID,
       petitionNumber,
     });
+
     this.initialHearing = new CourtDate();
     this.note = faker.lorem.words(20);
     this.petitions = [new Petition({ incidentID, petitionNumber })];
@@ -42,6 +43,7 @@ export default class IntakeForm {
         lastName: faker.name.lastName(),
       },
     ];
+
     this.youth = youth || new Youth();
 
     // TODO: flesh out these domains in gql

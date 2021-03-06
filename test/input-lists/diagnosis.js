@@ -11,8 +11,8 @@ export default {
   MOOD_DISORDER: { toString: () => 'Mood Disorder' },
   ODD: { toString: () => 'ODD' },
   OTHER: { toString: () => 'Other' },
-  PTSD: { toString: () => 'PTSD' },
   PSYCHIATRIC: { toString: () => 'Psychiatric' },
+  PTSD: { toString: () => 'PTSD' },
   SPECIAL_EDUCATION: { toString: () => 'Special Education' },
   UNSPECIFIED: { toString: () => 'Unspecified' },
 };

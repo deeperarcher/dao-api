@@ -1,4 +1,5 @@
 import * as faker from 'faker';
+
 import LIST from '../input-lists';
 
 import { fromList } from './utilities';

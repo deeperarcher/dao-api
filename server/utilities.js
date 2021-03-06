@@ -1,9 +1,9 @@
-import IntakeForm from './models/IntakeForm';
-import Listing from './models/Listing';
-
 import IntakeFormMock from '../test/mocks/IntakeForm';
 import ListingMock from '../test/mocks/Listing';
 import YouthMock from '../test/mocks/Youth';
+
+import IntakeForm from './models/IntakeForm';
+import Listing from './models/Listing';
 
 export async function clearDB() {
   await Promise.all([
@@ -33,11 +33,13 @@ export async function seedDB(
 
     new Array(numberOfIntakesPerYouth).fill().forEach(async () => {
       const intakeForm = new IntakeFormMock({ youth });
+
       youthIntakeForms.push(intakeForm);
     });
 
     new Array(numberOfListingsPerYouth).fill().forEach(async () => {
       const listing = new ListingMock({ intakeForms: youthIntakeForms, youth });
+
       listings.push(listing);
     });
 

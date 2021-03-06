@@ -1,7 +1,6 @@
 import { mergeTypeDefs } from 'graphql-tools';
 
 import SeedTypes from './dev/seed/types';
-
 import AdjudicationTypes from './domains/Adjudication/types';
 import AdmissionTypes from './domains/Admission/types';
 import ArrestTypes from './domains/Arrest/types';
