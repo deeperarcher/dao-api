@@ -12,9 +12,9 @@ describe('mutation seed', () => {
       mutation {
         seed(
           input: {
-            numberOfIntakesPerYouth: 1
-            numberOfListingsPerYouth: 1
-            numberOfYouths: 1
+            numberOfIntakesPerYouth: 2
+            numberOfListingsPerYouth: 3
+            numberOfYouths: 2
           }
         ) {
           intakeForms {
@@ -32,8 +32,8 @@ describe('mutation seed', () => {
     const { data, errors } = await mutate({ mutation });
 
     expect(errors).toEqual(undefined);
-    expect(data.seed.intakeForms.length).toEqual(1);
-    expect(data.seed.listings.length).toEqual(1);
+    expect(data.seed.intakeForms.length).toEqual(4);
+    expect(data.seed.listings.length).toEqual(6);
     expect(typeof data.seed.intakeForms[0].youth.PID).toBe('string');
     expect(typeof data.seed.listings[0].PID).toBe('string');
   });

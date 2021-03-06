@@ -27,24 +27,28 @@ export async function seedDB(
   const intakeForms = [];
   const listings = [];
 
-  new Array(numberOfYouths).fill().forEach(async () => {
+  new Array(numberOfYouths).fill().forEach(() => {
     const youth = new YouthMock();
     const youthIntakeForms = [];
 
-    new Array(numberOfIntakesPerYouth).fill().forEach(async () => {
-      const intakeForm = new IntakeFormMock({ youth });
-
-      youthIntakeForms.push(intakeForm);
+    new Array(numberOfIntakesPerYouth).fill().forEach(() => {
+      youthIntakeForms.push(new IntakeFormMock({ youth }));
     });
 
-    new Array(numberOfListingsPerYouth).fill().forEach(async () => {
-      const listing = new ListingMock({ intakeForms: youthIntakeForms, youth });
-
-      listings.push(listing);
+    new Array(numberOfListingsPerYouth).fill().forEach(() => {
+      listings.push(new ListingMock({ intakeForms: youthIntakeForms, youth }));
     });
 
     youthIntakeForms.forEach(form => intakeForms.push(form));
   });
+
+  try {
+    await Promise.all(
+      [...intakeForms, ...listings].map(async form => await form.save())
+    );
+  } catch (e) {
+    return console.error('seed error', e);
+  }
 
   return {
     intakeForms,
