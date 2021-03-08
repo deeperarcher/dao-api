@@ -3,7 +3,7 @@ module.exports = {
     autoStart: false,
     binary: {
       skipMD5: true,
-      version: '4.0.3',
+      version: 'latest',
     },
     instance: {
       dbName: 'jest',
