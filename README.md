@@ -1,7 +1,9 @@
 # GraphQL-MongoDB API
 
-b.y.o. mongoURI
+1) `nvm install`
 
-`yarn start`
+2) `npm install`
+
+3) `docker-compose up`
 
 visit `http://localhost:4000/playground`
