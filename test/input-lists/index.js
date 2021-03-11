@@ -1,4 +1,5 @@
 import ChargeCategory from './charge-category';
+import ChargeCodes from './charge-codes.json';
 import ChargeGrade from './charge-grade';
 import ConditionType from './condition-type';
 import Courtroom from './courtroom';
@@ -14,6 +15,7 @@ import LegalStatus from './legal-status';
 import Nature from './nature';
 import Race from './race';
 import Relation from './relation';
+import School from './school';
 import Sex from './sex';
 import SupervisionType from './supervision-type';
 import TraumaType from './trauma-type';
@@ -21,6 +23,7 @@ import Treatment from './treatment';
 
 export default {
   ChargeCategory,
+  ChargeCodes,
   ChargeGrade,
   ConditionType,
   Courtroom,
@@ -36,6 +39,7 @@ export default {
   Nature,
   Race,
   Relation,
+  School,
   Sex,
   SupervisionType,
   TraumaType,
