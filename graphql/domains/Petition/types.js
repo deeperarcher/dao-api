@@ -8,6 +8,7 @@ const Petition = `
     dateFiled: String
     DCNum: String
     incident: Incident!
+    incidentID: String!
     intakeForm: IntakeForm!
     isDirectFiled: Boolean
     isDiverted: Boolean

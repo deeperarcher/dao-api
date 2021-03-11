@@ -21,9 +21,10 @@ const IntakeFormSchema = new Schema({
       category: String,
       code: String,
       grade: String,
-      ID: String,
+      ID: { required: true, type: String },
       isLead: Boolean,
       name: String,
+      petitionNumber: { required: true, type: String },
     },
   ],
   courtOrderEvents: [
@@ -33,7 +34,9 @@ const IntakeFormSchema = new Schema({
       order: String,
       petitionNumbers: [String],
       reasons: [String],
-      serviceProvider: String,
+      serviceProvider: {
+        name: String,
+      },
     },
   ],
   DA: String,
@@ -57,7 +60,7 @@ const IntakeFormSchema = new Schema({
     date: String,
   },
   note: String,
-  // Petition: 0 or 1 victims; Incident: 1+ petitions, therefore 0+ victims
+  // Petition: 0 or 1 victims; Incident: 1 petition, therefore 0 or 1 victim
   petitions: [
     {
       dateFiled: { required: true, type: String },
@@ -72,9 +75,8 @@ const IntakeFormSchema = new Schema({
   victims: [
     {
       firstName: String,
-      incidentIDs: [String],
       lastName: String,
-      petitionNumber: [String],
+      petitionNumber: { required: true, type: String },
     },
   ],
   youth: {
@@ -91,7 +93,7 @@ const IntakeFormSchema = new Schema({
     ],
     isLatino: Boolean,
     lastName: { required: true, type: String },
-    phoneNumber: Number,
+    phoneNumber: String,
     PID: { required: true, type: String },
     race: String,
     school: String,

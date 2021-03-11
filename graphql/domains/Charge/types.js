@@ -10,6 +10,7 @@ const Charge = `
     isLead: Boolean
     name: String
     petition: Petition!
+    petitionNumber: String!
   }
 `;
 

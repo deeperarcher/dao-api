@@ -18,7 +18,6 @@ const ArrestInput = `
   input ArrestInput {
     date: String
     district: String
-    incidentIDs: [String]!
     isGunCase: Boolean
     isGunInvolvedArrest: Boolean
     officers: [String]!

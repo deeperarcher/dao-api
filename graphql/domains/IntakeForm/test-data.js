@@ -49,7 +49,6 @@ const input = {
   arrest: {
     date: '1603354380000',
     district: '13',
-    incidentIDs: [],
     isGunCase: true,
     isGunInvolvedArrest: true,
     officers: ['12452415', '15623452'],
@@ -103,7 +102,6 @@ const input = {
   victims: [
     {
       firstName: 'Firstname',
-      incidentIDs: ['124STREETS1603324800000'],
       lastName: 'Doe',
       petitionNumber: '1742561',
     },
