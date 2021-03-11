@@ -28,8 +28,8 @@ continuances {
   }
   reasons
 }
-courtOrders {
-  courtOrderType
+courtOrderEvents {
+  eventType
   isSupervision
   order
   petition {
@@ -84,7 +84,7 @@ const input = {
     courtroom: { name: 'CR1234' },
     date: '2014-10-12',
   },
-  courtOrders: [],
+  courtOrderEvents: [],
   DA: 'Sternamin',
   legalStatusEvents: [
     {
@@ -117,7 +117,7 @@ export const response = [
       courtroom: { name: 'CR1234' },
       date: '2014-10-12',
     },
-    courtOrders: [],
+    courtOrderEvents: [],
     DA: 'Sternamin',
     legalStatusEvents: [
       {

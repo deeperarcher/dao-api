@@ -3,7 +3,7 @@ const Petition = `
     arrest: Arrest!
     certifications: [Certification]!
     continuances: [Continuance]!
-    courtOrders: [CourtOrder]!
+    courtOrderEvents: [CourtOrderEvent]!
     charges: [Charge!]!
     dateFiled: String
     DCNum: String

@@ -2,7 +2,7 @@ const IntakeForm = `
   type IntakeForm {
     arrest: Arrest!
     charges: [Charge]!
-    courtOrders: [CourtOrder]!
+    courtOrderEvents: [CourtOrderEvent]!
     DA: String!
     incidents: [Incident]!
     initialHearing: CourtDate!
@@ -16,7 +16,7 @@ const IntakeFormInput = `
   input IntakeFormInput {
     arrest: ArrestInput!
     charges: [ChargeInput]!
-    courtOrders: [CourtOrderInput]!
+    courtOrderEvents: [CourtOrderEventInput]!
     DA: String!
     incidents: [IncidentInput]!
     initialHearing: CourtDateInput!

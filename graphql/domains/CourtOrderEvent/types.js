@@ -1,18 +1,19 @@
-const CourtOrder = `
-  type CourtOrder {
-    courtOrderType: String
+const CourtOrderEvent = `
+  type CourtOrderEvent {
+    eventType: EventType
     isSupervision: Boolean
     listing: Listing!
     order: String!
     petition: Petition!
+    petitionNumbers: [String]
     reasons: [String]
     serviceProvider: ServiceProvider
   }
 `;
 
-const CourtOrderInput = `
-  input CourtOrderInput {
-    courtOrderType: String
+const CourtOrderEventInput = `
+  input CourtOrderEventInput {
+    eventType: EventType
     isSupervision: Boolean
     order: String
     petitionNumbers: [String]
@@ -21,4 +22,4 @@ const CourtOrderInput = `
   }
 `;
 
-export default [CourtOrder, CourtOrderInput];
+export default [CourtOrderEvent, CourtOrderEventInput];

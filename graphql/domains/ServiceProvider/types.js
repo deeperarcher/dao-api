@@ -1,6 +1,6 @@
 const ServiceProvider = `
   type ServiceProvider {
-    courtOrders: [CourtOrder]!
+    courtOrderEvents: [CourtOrderEvent]!
     name: String!
   }
 `;

@@ -49,10 +49,10 @@ const ListingSchema = new Schema({
     },
     date: String,
   },
-  courtOrders: [
+  courtOrderEvents: [
     {
-      courtOrderType: String,
       date: String,
+      eventType: { required: true, type: String },
       isSupervision: Boolean,
       order: String,
       petitionNumbers: [String],

@@ -9,7 +9,7 @@ import ChargeTypes from './domains/Charge/types';
 import ChargeGradeEventTypes from './domains/ChargeGradeEvent/types';
 import ContinuanceTypes from './domains/Continuance/types';
 import CourtDateTypes from './domains/CourtDate/types';
-import CourtOrderTypes from './domains/CourtOrder/types';
+import CourtOrderEventTypes from './domains/CourtOrderEvent/types';
 import CourtroomTypes from './domains/Courtroom/types';
 import GuardianTypes from './domains/Guardian/types';
 import IncidentTypes from './domains/Incident/types';
@@ -21,6 +21,7 @@ import QueryTypes from './domains/Query/types';
 import ServiceProviderTypes from './domains/ServiceProvider/types';
 import VictimTypes from './domains/Victim/types';
 import YouthTypes from './domains/Youth/types';
+import * as enums from './enums';
 
 const typeDefs = [
   ...AdjudicationTypes,
@@ -31,7 +32,7 @@ const typeDefs = [
   ...ChargeGradeEventTypes,
   ...ContinuanceTypes,
   ...CourtDateTypes,
-  ...CourtOrderTypes,
+  ...CourtOrderEventTypes,
   ...CourtroomTypes,
   ...GuardianTypes,
   ...IncidentTypes,
@@ -43,6 +44,7 @@ const typeDefs = [
   ...ServiceProviderTypes,
   ...VictimTypes,
   ...YouthTypes,
+  enums.EventType,
 ];
 
 if (process.env.NODE_ENV !== 'production') {

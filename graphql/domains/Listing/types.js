@@ -7,7 +7,7 @@ const Listing = `
     chargeGradeEvents: [ChargeGradeEvent]!
     continuances: [Continuance]!
     courtDate: CourtDate!
-    courtOrders: [CourtOrder]!
+    courtOrderEvents: [CourtOrderEvent]!
     DA: String!
     legalStatusEvents: [LegalStatusEvent]!
     listingType: String
@@ -24,7 +24,7 @@ const ListingInput = `
     charges: [ChargeInput]
     chargeGradeEvents: [ChargeGradeEventInput]
     continuances: [ContinuanceInput]
-    courtOrders: [CourtOrderInput]
+    courtOrderEvents: [CourtOrderEventInput]
     courtDate: CourtDateInput!
     DA: String
     legalStatusEvents: [LegalStatusEventInput]

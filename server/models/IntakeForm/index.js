@@ -26,9 +26,9 @@ const IntakeFormSchema = new Schema({
       name: String,
     },
   ],
-  courtOrders: [
+  courtOrderEvents: [
     {
-      courtOrderType: String,
+      eventType: { required: true, type: String },
       isSupervision: Boolean,
       order: String,
       petitionNumbers: [String],

@@ -5,7 +5,7 @@ const sampleProps = `
   charges {
     ID
   }
-  courtOrders {
+  courtOrderEvents {
     order
   }
   DA
@@ -68,7 +68,7 @@ const input = {
       petitionNumber: '1742561',
     },
   ],
-  courtOrders: [],
+  courtOrderEvents: [],
   DA: 'Sternamin',
   incidents: [
     {
@@ -140,7 +140,7 @@ export const response = [
   {
     arrest: { date: '1603354380000' },
     charges: [{ ID: 'charge1' }],
-    courtOrders: [],
+    courtOrderEvents: [],
     DA: 'Sternamin',
     incidents: [
       {
