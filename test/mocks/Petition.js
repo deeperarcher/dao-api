@@ -1,10 +1,13 @@
+import * as faker from 'faker';
+
+import { formatDate } from './utilities';
 export default class Petition {
-  constructor({ incidentID, petitionNumber }) {
-    this.dateFiled = 'abc';
-    this.isDiverted = false;
-    this.isDirectFiled = true;
-    this.isTransferFromOtherCounty = false;
-    this.incidentID = incidentID;
-    this.petitionNumber = petitionNumber;
+  constructor() {
+    this.dateFiled = formatDate(faker.date.recent());
+    this.DCNum = faker.random.number(10000).toString();
+    this.isDiverted = faker.random.boolean();
+    this.isDirectFiled = faker.random.boolean();
+    this.isTransferFromOtherCounty = faker.random.boolean();
+    this.petitionNumber = faker.random.number(10000).toString();
   }
 }

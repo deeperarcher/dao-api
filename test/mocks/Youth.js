@@ -1,7 +1,9 @@
 import * as faker from 'faker';
 
+import LIST from '../input-lists';
+
 import Guardian from './Guardian';
-import { formatDate } from './utilities';
+import { formatDate, fromList, intoArray } from './utilities';
 
 export default class Youth {
   constructor() {
@@ -11,15 +13,15 @@ export default class Youth {
     );
 
     this.firstName = faker.name.firstName();
-    this.grade = faker.random.number(6) + 6; // 6-12 *untested
-    this.guardians = [new Guardian()];
+    this.grade = faker.random.number(6) + 6; // 6-12
+    this.guardians = intoArray(2, () => new Guardian());
     this.isLatino = faker.random.boolean();
     this.lastName = faker.name.lastName();
-    this.phoneNumber = '1231231234';
+    this.phoneNumber = faker.phone.phoneNumber();
     this.PID = faker.random.number(10000).toString();
-    this.race = 'white';
-    this.school = 'Vare';
-    this.sex = 'male';
+    this.race = fromList(LIST.Race);
+    this.school = faker.random.arrayElement(LIST.School);
+    this.sex = fromList(LIST.Sex);
     this.zip = faker.address.zipCodeByState('PA');
   }
 }

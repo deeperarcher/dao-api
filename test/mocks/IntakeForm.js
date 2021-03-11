@@ -5,44 +5,44 @@ import IntakeFormModel from '../../server/models/IntakeForm';
 import Arrest from './Arrest';
 import Charge from './Charge';
 import CourtDate from './CourtDate';
+import CourtOrderEvent from './CourtOrderEvent';
 import Incident from './Incident';
 import Petition from './Petition';
+import Victim from './Victim';
 import Youth from './Youth';
-import { formatDate, intoArray } from './utilities';
+import { intoArray } from './utilities';
 
 export default class IntakeForm {
   constructor({ youth }) {
-    const petitionNumber = faker.random.number(10000).toString();
-    const incidentAddress = faker.address.streetAddress();
-    const incidentDate = formatDate(faker.date.recent());
-    const incidentID = (
-      petitionNumber +
-      incidentAddress.substr(0, 10) +
-      incidentDate.substr(0, 10)
-    )
-      .replace(/\s/g, '')
-      .toUpperCase();
+    const petitions = intoArray(3, () => new Petition());
 
     this.arrest = new Arrest();
-    this.charges = intoArray(3, (_, i) => new Charge(i === 0, petitionNumber));
-    this.courtOrders = [];
+    this.charges = petitions.flatMap(({ petitionNumber }) =>
+      intoArray(3, (_, i) => new Charge({ isLead: i === 0, petitionNumber }))
+    );
+
+    this.courtOrderEvents = intoArray(
+      3,
+      () => new CourtOrderEvent({ petitions })
+    );
+
     this.DA = faker.name.lastName();
-    this.incident = new Incident({
-      incidentAddress,
-      incidentDate,
-      incidentID,
-      petitionNumber,
+    this.incidents = petitions.map(({ petitionNumber }, i) => {
+      const incident = new Incident({ petitionNumber });
+
+      petitions[i].incidentID = incident.ID;
+
+      return incident;
     });
 
     this.initialHearing = new CourtDate();
     this.note = faker.lorem.words(20);
-    this.petitions = [new Petition({ incidentID, petitionNumber })];
-    this.victims = [
-      {
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
-      },
-    ];
+    this.petitions = petitions;
+    this.victims = petitions.reduce(
+      (acc, { petitionNumber }) =>
+        faker.random.boolean() ? [...acc, new Victim({ petitionNumber })] : acc,
+      []
+    );
 
     this.youth = youth || new Youth();
 

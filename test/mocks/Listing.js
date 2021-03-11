@@ -57,10 +57,10 @@ export default class Listing {
     ];
 
     this.courtDate = courtDate;
-    this.courtOrders = [
+    this.courtOrderEvents = [
       {
-        courtOrderType: 'the good type',
         date: courtDate.date,
+        eventType: 'ORDERED',
         isSupervision: false,
         order: 'the order',
         petitionNumbers: faker.random.arrayElements(petitionNumbers),
