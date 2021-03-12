@@ -1,1 +1,3 @@
-export { default as EventType } from './event-type';
+import EventType from './EventType';
+
+export default [EventType];

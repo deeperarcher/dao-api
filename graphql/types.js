@@ -21,7 +21,7 @@ import QueryTypes from './domains/Query/types';
 import ServiceProviderTypes from './domains/ServiceProvider/types';
 import VictimTypes from './domains/Victim/types';
 import YouthTypes from './domains/Youth/types';
-import * as enums from './enums';
+import enums from './enums';
 
 const typeDefs = [
   ...AdjudicationTypes,
@@ -44,7 +44,7 @@ const typeDefs = [
   ...ServiceProviderTypes,
   ...VictimTypes,
   ...YouthTypes,
-  enums.EventType,
+  ...enums,
 ];
 
 if (process.env.NODE_ENV !== 'production') {
