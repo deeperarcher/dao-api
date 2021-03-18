@@ -1,5 +1,5 @@
-import IntakeForm from '../server/models/IntakeForm';
-import Listing from '../server/models/Listing';
+import IntakeForm from '../../server/models/IntakeForm';
+import Listing from '../../server/models/Listing';
 
 export async function getIntakeForms(
   { isGunInvolvedArrest, PID } = { isGunInvolvedArrest: null, PID: null }
