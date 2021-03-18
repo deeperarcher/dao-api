@@ -3,10 +3,14 @@ import * as faker from 'faker';
 import IntakeFormModel from '../../server/models/IntakeForm';
 
 import Arrest from './Arrest';
+import CallIn from './CallIn';
 import Charge from './Charge';
 import CourtDate from './CourtDate';
 import CourtOrderEvent from './CourtOrderEvent';
+import Diversion from './Diversion';
+import Evaluation from './Evaluation';
 import Incident from './Incident';
+import IntakeConference from './IntakeConference';
 import Petition from './Petition';
 import Victim from './Victim';
 import Youth from './Youth';
@@ -17,6 +21,7 @@ export default class IntakeForm {
     const petitions = intoArray(3, () => new Petition());
 
     this.arrest = new Arrest();
+    this.callIn = new CallIn();
     this.charges = petitions.flatMap(({ petitionNumber }) =>
       intoArray(3, (_, i) => new Charge({ isLead: i === 0, petitionNumber }))
     );
@@ -27,6 +32,8 @@ export default class IntakeForm {
     );
 
     this.DA = faker.name.lastName();
+    this.diversion = new Diversion();
+    this.evaluation = new Evaluation();
     this.incidents = petitions.map(({ petitionNumber }, i) => {
       const incident = new Incident({ petitionNumber });
 
@@ -36,6 +43,7 @@ export default class IntakeForm {
     });
 
     this.initialHearing = new CourtDate();
+    this.intakeConference = new IntakeConference();
     this.note = faker.lorem.words(20);
     this.petitions = petitions;
     this.victims = petitions.reduce(
@@ -45,31 +53,8 @@ export default class IntakeForm {
     );
 
     this.youth = youth || new Youth();
-
-    // TODO: flesh out these domains in gql
-    // CALL-IN
-    // this.callInDate = formatDate(faker.date.recent());
-    // this.callInHoldFacility = fromList(LIST.DetentionFacility);
-    // this.callInOverrideHoldReasons = intoArray(3, () => faker.random.words(2));
-    // this.DRAIAction = fromList(LIST.DRAIAction);
-    // this.DRAIScore = faker.random.number(12);
-    // this.wasDRAIAdministered = faker.random.boolean();
-    // // DIVERSION
-    // this.diversionType = faker.random.word();
-    // this.diversionReferralDate = formatDate(faker.date.recent());
-    // this.diversionReferralSource = faker.random.word();
-    // this.ReasonsNoDiversion = intoArray(3, () => faker.random.words(2));
-    // this.YAPPanelDistrict = faker.random.number(20);
-    // // EVALUATION
-    // this.diagnoses = intoArray(3, () => fromList(LIST.Diagnosis));
-    // this.traumaTypes = intoArray(3, () => fromList(LIST.TraumaType));
-    // this.treatments = intoArray(3, () => fromList(LIST.Treatment));
-    // // INTAKE CONFERENCE
-    // this.DHSStatusAtArrest = fromList(LIST.DHSStatus);
-    // this.intakeConferenceDate = formatDate(faker.date.recent());
-    // this.intakeConferenceOutcome = fromList(LIST.IntakeConferenceOutcome);
-    // this.intakeConferenceType = fromList(LIST.IntakeConferenceType);
   }
+
   async save() {
     await IntakeFormModel.create(this);
   }

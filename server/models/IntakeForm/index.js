@@ -16,6 +16,14 @@ const IntakeFormSchema = new Schema({
     referralDate: String,
     SID: String,
   },
+  callIn: {
+    date: String,
+    DRAIAction: String,
+    DRAIScore: Number,
+    holdFacility: String,
+    overrideHoldReasons: [String],
+    wasDRAIAdministered: Boolean,
+  },
   charges: [
     {
       category: String,
@@ -40,6 +48,18 @@ const IntakeFormSchema = new Schema({
     },
   ],
   DA: String,
+  diversion: {
+    diversionType: String,
+    reasonsNoDiversion: [String],
+    referralDate: String,
+    referralSource: String,
+    YAPPanelDistrict: String,
+  },
+  evaluation: {
+    diagnoses: [String],
+    traumas: [String],
+    treatments: [String],
+  },
   // Incident: 1+ petitions, therefore 0+ victims
   incidents: [
     {
@@ -58,6 +78,12 @@ const IntakeFormSchema = new Schema({
       name: String,
     },
     date: String,
+  },
+  intakeConference: {
+    date: String,
+    DHSStatusAtArrest: String,
+    intakeConferenceType: String,
+    outcome: String,
   },
   note: String,
   // Petition: 0 or 1 victims; Incident: 1 petition, therefore 0 or 1 victim
@@ -100,30 +126,6 @@ const IntakeFormSchema = new Schema({
     sex: String,
     zip: String,
   },
-
-  // TODO: Get in there, misunderstood domains!
-  // // CALL-IN
-  // callInDate: String,
-  // callInHoldFacility: String,
-  // callInOverrideHoldReasons: [String],
-  // DRAIAction: String,
-  // DRAIScore: Number,
-  // wasDRAIAdministered: Boolean,
-  // // DIVERSION
-  // diversionReferralDate: String,
-  // diversionReferralSource: String,
-  // diversionType: String,
-  // ReasonsNoDiversion: [String],
-  // YAPPanelDistrict: String,
-  // // EVALUATION
-  // diagnoses: [String],
-  // traumaTypes: [String],
-  // treatments: [String],
-  // // INTAKE CONFERENCE
-  // DHSStatusAtArrest: String,
-  // intakeConferenceDate: String,
-  // intakeConferenceOutcome: String,
-  // intakeConferenceType: String,
 });
 
 export default mongoose.model('IntakeForm', IntakeFormSchema);

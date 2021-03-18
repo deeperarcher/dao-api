@@ -2,6 +2,9 @@ const sampleProps = `
   arrest {
     date
   }
+  callIn {
+    DRAIAction
+  }
   charges {
     ID
   }
@@ -9,6 +12,12 @@ const sampleProps = `
     order
   }
   DA
+  diversion {
+    diversionType
+  }
+  evaluation {
+    diagnoses
+  }
   incidents {
     date
     ID
@@ -19,6 +28,9 @@ const sampleProps = `
       name
     }
     date
+  }
+  intakeConference {
+    outcome
   }
   note
   petitions {
@@ -56,6 +68,14 @@ const input = {
     referralDate: '1603380840000',
     SID: '1245511',
   },
+  callIn: {
+    date: '2021-03-17',
+    DRAIAction: 'FOLLOW_RELEASE',
+    DRAIScore: 0,
+    holdFacility: 'PJJSC',
+    overrideHoldReasons: ['drive cross-platform', 'Berkshire payment'],
+    wasDRAIAdministered: false,
+  },
   charges: [
     {
       category: 'a',
@@ -69,6 +89,18 @@ const input = {
   ],
   courtOrderEvents: [],
   DA: 'Sternamin',
+  diversion: {
+    diversionType: 'Cambridgeshire',
+    reasonsNoDiversion: ['Right-sized Movies'],
+    referralDate: '2021-03-17',
+    referralSource: 'Balanced',
+    YAPPanelDistrict: '1',
+  },
+  evaluation: {
+    diagnoses: ['OTHER', 'AUTISM_SPECTRUM', 'ANXIETY'],
+    traumas: ['ABUSE_DOMESTIC_VIOLENCE', 'FAMILY_INCARCERATION'],
+    treatments: ['SERVICES_ACTIVE', 'MEDICATION_PAST'],
+  },
   incidents: [
     {
       address: '124 Streetsville Rd.',
@@ -86,6 +118,12 @@ const input = {
       name: '3E',
     },
     date: '2020-11-05',
+  },
+  intakeConference: {
+    date: '2021-03-18',
+    DHSStatusAtArrest: 'NONE',
+    intakeConferenceType: 'DA',
+    outcome: 'FTA',
   },
   note: 'test note',
   petitions: [
@@ -137,9 +175,12 @@ const input = {
 export const response = [
   {
     arrest: { date: '1603354380000' },
+    callIn: { DRAIAction: 'FOLLOW_RELEASE' },
     charges: [{ ID: 'charge1' }],
     courtOrderEvents: [],
     DA: 'Sternamin',
+    diversion: { diversionType: 'Cambridgeshire' },
+    evaluation: { diagnoses: ['OTHER', 'AUTISM_SPECTRUM', 'ANXIETY'] },
     incidents: [
       {
         date: '1603324800000',
@@ -153,6 +194,7 @@ export const response = [
       },
       date: '2020-11-05',
     },
+    intakeConference: { outcome: 'FTA' },
     note: 'test note',
     petitions: [
       {
