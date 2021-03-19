@@ -3,7 +3,7 @@ const Query = `
     intakeForm(_id: String!): IntakeForm!
     intakeForms(PID: String): [IntakeForm]!
     legacyExport: String!
-    legacyInputDirectory: String!
+    inputIDDirectory: String!
     listing(_id: String!): Listing!
     listings(PID: String): [Listing]!
     youth(PID: String!): Youth!
