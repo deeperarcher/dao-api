@@ -12,6 +12,8 @@ const Petition = `
     intakeForm: IntakeForm!
     isDirectFiled: Boolean
     isDiverted: Boolean
+    isGunCase: Boolean!
+    isGunInvolved: Boolean!
     isTransferFromOtherCounty: Boolean
     legalStatus: String!
     legalStatusEvents: [LegalStatusEvent]!
@@ -28,6 +30,8 @@ const PetitionInput = `
     incidentID: String!
     isDirectFiled: Boolean
     isDiverted: Boolean
+    isGunCase: Boolean!
+    isGunInvolved: Boolean!
     isTransferFromOtherCounty: Boolean
     petitionNumber: String!
   }

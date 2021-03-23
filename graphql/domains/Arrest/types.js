@@ -4,8 +4,6 @@ const Arrest = `
     district: String
     incidents: [Incident]!
     intakeForm: IntakeForm!
-    isGunCase: Boolean
-    isGunInvolvedArrest: Boolean
     officers: [String]!
     petitions: [Petition!]!
     referralDate: String
@@ -18,8 +16,6 @@ const ArrestInput = `
   input ArrestInput {
     date: String
     district: String
-    isGunCase: Boolean
-    isGunInvolvedArrest: Boolean
     officers: [String]!
     petitionNumbers: [String]!
     referralDate: String
