@@ -2,7 +2,7 @@ import IntakeForm from '../../server/models/IntakeForm';
 import Listing from '../../server/models/Listing';
 
 export async function getIntakeForms(
-  { isGunInvolvedArrest, PID } = { isGunInvolvedArrest: null, PID: null }
+  { isGunInvolved, PID } = { isGunInvolved: null, PID: null }
 ) {
   let response;
   let query = IntakeForm.find({});
@@ -11,8 +11,16 @@ export async function getIntakeForms(
     query = query.find({ 'youth.PID': PID });
   }
 
-  if (typeof isGunInvolvedArrest === 'boolean') {
-    query = query.find({ 'arrest.isGunInvolvedArrest': isGunInvolvedArrest });
+  if (typeof isGunInvolved === 'boolean') {
+    if (isGunInvolved) {
+      query = query.find({
+        petitions: { $elemMatch: { isGunInvolved: true } },
+      });
+    } else {
+      query = query.find({
+        petitions: { $not: { $elemMatch: { isGunInvolved: true } } },
+      });
+    }
   }
 
   try {
@@ -25,9 +33,9 @@ export async function getIntakeForms(
 }
 
 export async function getOneIntakeForm(
-  { _id, isGunInvolvedArrest, PID } = {
+  { _id, isGunInvolved, PID } = {
     _id: null,
-    isGunInvolvedArrest: null,
+    isGunInvolved: null,
     PID: null,
   }
 ) {
@@ -38,8 +46,16 @@ export async function getOneIntakeForm(
     query = query.find({ _id });
   }
 
-  if (typeof isGunInvolvedArrest === 'boolean') {
-    query = query.find({ 'arrest.isGunInvolvedArrest': isGunInvolvedArrest });
+  if (typeof isGunInvolved === 'boolean') {
+    if (isGunInvolved) {
+      query = query.find({
+        petitions: { $elemMatch: { isGunInvolved: true } },
+      });
+    } else {
+      query = query.find({
+        petitions: { $not: { $elemMatch: { isGunInvolved: true } } },
+      });
+    }
   }
 
   if (PID) {
