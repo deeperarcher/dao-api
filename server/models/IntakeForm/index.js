@@ -10,8 +10,6 @@ const IntakeFormSchema = new Schema({
   arrest: {
     date: String,
     district: String,
-    isGunCase: Boolean,
-    isGunInvolvedArrest: Boolean,
     officers: [String], // payroll #
     referralDate: String,
     SID: String,
@@ -94,6 +92,8 @@ const IntakeFormSchema = new Schema({
       incidentID: { required: true, type: String },
       isDirectFiled: { required: true, type: Boolean },
       isDiverted: { required: true, type: Boolean },
+      isGunCase: { required: true, type: Boolean },
+      isGunInvolved: { required: true, type: Boolean },
       isTransferFromOtherCounty: { required: true, type: Boolean },
       petitionNumber: { required: true, type: String },
     },
@@ -103,6 +103,7 @@ const IntakeFormSchema = new Schema({
       firstName: String,
       lastName: String,
       petitionNumber: { required: true, type: String },
+      sex: String,
     },
   ],
   youth: {

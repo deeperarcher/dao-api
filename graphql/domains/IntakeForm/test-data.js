@@ -61,8 +61,6 @@ const input = {
   arrest: {
     date: '1603354380000',
     district: '13',
-    isGunCase: true,
-    isGunInvolvedArrest: true,
     officers: ['12452415', '15623452'],
     petitionNumbers: ['1742561'],
     referralDate: '1603380840000',
@@ -133,6 +131,8 @@ const input = {
       incidentID: '124STREETS1603324800000',
       isDirectFiled: false,
       isDiverted: true,
+      isGunCase: true,
+      isGunInvolved: true,
       isTransferFromOtherCounty: false,
       petitionNumber: '1742561',
     },

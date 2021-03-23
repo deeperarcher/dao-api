@@ -6,8 +6,6 @@ export default class Arrest {
   constructor() {
     this.date = formatDate(faker.date.recent());
     this.district = faker.random.number(25).toString();
-    this.isGunCase = faker.random.boolean();
-    this.isGunInvolvedArrest = faker.random.boolean();
     this.officers = intoArray(3, () =>
       (faker.random.number(89999) + 10000).toString()
     );

@@ -4,6 +4,7 @@ const Victim = `
     lastName: String!
     petition: Petition!
     petitionNumber: String!
+    sex: String
   }
 `;
 
@@ -12,6 +13,7 @@ const VictimInput = `
     firstName: String!
     lastName: String!
     petitionNumber: String!
+    sex: String
   }
 `;
 
