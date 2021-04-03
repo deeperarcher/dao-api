@@ -8,14 +8,14 @@ export default {
   HOME_PROPERTY: { toString: () => 'Home - Property' },
   HOME_SIBLINGS: { toString: () => 'Home - Siblings' },
   HOME_SISTER: { toString: () => 'Home - Sister' },
-  SCHHOL_OTHER: { toString: () => 'School - Other' },
-  SCHHOL_OTHER_STUDENT: { toString: () => 'School - Other Student' },
-  SCHHOL_POLICE_CLIMATE_STAFF: {
+  SCHOOL_DRUGS: { toString: () => 'School - Drugs' },
+  SCHOOL_OTHER: { toString: () => 'School - Other' },
+  SCHOOL_OTHER_STUDENT: { toString: () => 'School - Other Student' },
+  SCHOOL_POLICE_CLIMATE_STAFF: {
     toString: () => 'School - Police/Climate Staff',
   },
-  SCHHOL_PROPERTY: { toString: () => 'School - Property' },
-  SCHHOL_TEACHING_STAFF: { toString: () => 'School - Teaching Staff' },
-  SCHHOL_TERRORISTIC_THREAT: { toString: () => 'School - Terroristic Threat' },
-  SCHHOL_WEAPON: { toString: () => 'School - Weapon' },
-  SCHOOL_DRUGS: { toString: () => 'School - Drugs' },
+  SCHOOL_PROPERTY: { toString: () => 'School - Property' },
+  SCHOOL_TEACHING_STAFF: { toString: () => 'School - Teaching Staff' },
+  SCHOOL_TERRORISTIC_THREAT: { toString: () => 'School - Terroristic Threat' },
+  SCHOOL_WEAPON: { toString: () => 'School - Weapon' },
 };

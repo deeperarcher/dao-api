@@ -7,7 +7,7 @@ const ServiceProvider = `
 
 const ServiceProviderInput = `
   input ServiceProviderInput {
-    listingIDs: [String]!
+    listingIDs: [String]
     name: String!
   }
 `;

@@ -17,7 +17,7 @@ const CourtOrderEventInput = `
     isSupervision: Boolean
     order: String
     petitionNumbers: [String]
-    serviceProvider: String
+    serviceProvider: ServiceProviderInput
     reasons: [String]
   }
 `;
