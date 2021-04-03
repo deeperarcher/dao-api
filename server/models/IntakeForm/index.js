@@ -10,7 +10,9 @@ const IntakeFormSchema = new Schema({
   arrest: {
     date: String,
     district: String,
+    isActiveAtTimeOfArrest: Boolean,
     officers: [String], // payroll #
+    priorArrestCount: Number,
     referralDate: String,
     SID: String,
   },
