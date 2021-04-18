@@ -64,6 +64,7 @@ const IntakeFormSchema = new Schema({
     {
       address: String,
       date: String,
+      DCNum: String,
       district: String,
       ID: { required: true, type: String },
       incidentType: { required: true, type: String },
@@ -89,7 +90,6 @@ const IntakeFormSchema = new Schema({
   petitions: [
     {
       dateFiled: { required: true, type: String },
-      DCNum: String,
       incidentID: { required: true, type: String },
       isDirectFiled: { required: true, type: Boolean },
       isDiverted: { required: true, type: Boolean },

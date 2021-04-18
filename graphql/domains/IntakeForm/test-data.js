@@ -102,6 +102,7 @@ const input = {
     {
       address: '124 Streetsville Rd.',
       date: '1603324800000',
+      DCNum: '1245641-12',
       district: '12',
       ID: '124STREETS1603324800000',
       incidentType: 'School',
@@ -126,7 +127,6 @@ const input = {
   petitions: [
     {
       dateFiled: '1603324800000',
-      DCNum: '1245641-12',
       incidentID: '124STREETS1603324800000',
       isDirectFiled: false,
       isDiverted: true,

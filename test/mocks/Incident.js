@@ -8,6 +8,7 @@ export default class Incident {
   constructor({ petitionNumber }) {
     this.address = faker.address.streetAddress();
     this.date = formatDate(faker.date.recent());
+    this.DCNum = faker.random.number(10000).toString();
     this.district = faker.random.number(25).toString();
     this.ID = (
       petitionNumber +
