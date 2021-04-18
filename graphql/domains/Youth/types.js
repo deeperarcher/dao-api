@@ -16,6 +16,7 @@ const Youth = `
     race: String
     school: String
     sex: String
+    SID: String
     zip: String
   }
 `;
@@ -34,6 +35,7 @@ const YouthInput = `
     race: String
     school: String
     sex: String
+    SID: String
     zip: String
   }
 `;

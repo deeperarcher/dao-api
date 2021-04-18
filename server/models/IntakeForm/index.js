@@ -14,7 +14,6 @@ const IntakeFormSchema = new Schema({
     officers: [String], // payroll #
     priorArrestCount: Number,
     referralDate: String,
-    SID: String,
   },
   callIn: {
     date: String,
@@ -127,6 +126,7 @@ const IntakeFormSchema = new Schema({
     race: String,
     school: String,
     sex: String,
+    SID: String,
     zip: String,
   },
 });
