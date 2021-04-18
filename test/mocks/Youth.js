@@ -22,6 +22,7 @@ export default class Youth {
     this.race = fromList(LIST.Race);
     this.school = faker.random.arrayElement(LIST.School);
     this.sex = fromList(LIST.Sex);
+    this.SID = (faker.random.number(89999) + 10000).toString();
     this.zip = faker.address.zipCodeByState('PA');
   }
 }

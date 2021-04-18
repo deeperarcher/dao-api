@@ -64,7 +64,6 @@ const input = {
     officers: ['12452415', '15623452'],
     petitionNumbers: ['1742561'],
     referralDate: '1603380840000',
-    SID: '1245511',
   },
   callIn: {
     date: '2021-03-17',
@@ -168,6 +167,7 @@ const input = {
     race: 'African American',
     school: 'South Philadelphia HS',
     sex: 'Male',
+    SID: '1245511',
     zip: '123123-123',
   },
 };

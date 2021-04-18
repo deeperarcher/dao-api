@@ -9,7 +9,6 @@ const Arrest = `
     petitions: [Petition!]!
     priorArrestCount: Int
     referralDate: String
-    SID: String
     youth: Youth!
   }
 `;
@@ -23,7 +22,6 @@ const ArrestInput = `
     petitionNumbers: [String]!
     priorArrestCount: Int
     referralDate: String
-    SID: String
   }
 `;
 
