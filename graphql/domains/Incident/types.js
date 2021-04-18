@@ -2,6 +2,7 @@ const Incident = `
   type Incident {
     address: String
     date: String
+    DCNum: String
     district: String
     ID: String!
     incidentType: String
@@ -19,6 +20,7 @@ const IncidentInput = `
     address: String
     date: String!
     district: String
+    DCNum: String
     ID: String!
     incidentType: String
     isTimeKnown: Boolean

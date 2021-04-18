@@ -6,7 +6,6 @@ const Petition = `
     courtOrderEvents: [CourtOrderEvent]!
     charges: [Charge!]!
     dateFiled: String
-    DCNum: String
     incident: Incident!
     incidentID: String!
     intakeForm: IntakeForm!
@@ -26,7 +25,6 @@ const Petition = `
 const PetitionInput = `
   input PetitionInput {
     dateFiled: String!
-    DCNum: String
     incidentID: String!
     isDirectFiled: Boolean
     isDiverted: Boolean
