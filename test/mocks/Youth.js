@@ -18,7 +18,7 @@ export default class Youth {
     this.isLatino = faker.random.boolean();
     this.lastName = faker.name.lastName();
     this.phoneNumber = faker.phone.phoneNumber();
-    this.PID = faker.random.number(10000).toString();
+    this.PID = (faker.random.number(999999) + 1000000).toString();
     this.race = fromList(LIST.Race);
     this.school = faker.random.arrayElement(LIST.School);
     this.sex = fromList(LIST.Sex);
