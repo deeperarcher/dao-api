@@ -85,7 +85,9 @@ export default class Listing {
     this.listingType = 'the good type';
     this.nextListing = new CourtDate();
     this.note = faker.lorem.words(20);
-    this.PID = (youth && youth.PID) || faker.random.number(10000).toString();
+    this.PID =
+      (youth && youth.PID) ||
+      (faker.random.number(999999) + 1000000).toString();
   }
   async save() {
     await ListingModel.create(this);

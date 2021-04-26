@@ -1,14 +1,23 @@
 import * as faker from 'faker';
 
 import { formatDate } from './utilities';
+
+const { date, random } = faker;
+const { boolean, number } = random;
+
+function generatePetitionNumber() {
+  return `CP-${number(50)}-JV-${
+    number(999999) + 1000000
+  }-${date.recent().getFullYear()}`;
+}
 export default class Petition {
   constructor() {
-    this.dateFiled = formatDate(faker.date.recent());
-    this.isDiverted = faker.random.boolean();
-    this.isDirectFiled = faker.random.boolean();
-    this.isGunCase = faker.random.boolean();
-    this.isGunInvolved = faker.random.boolean();
-    this.isTransferFromOtherCounty = faker.random.boolean();
-    this.petitionNumber = faker.random.number(10000).toString();
+    this.dateFiled = formatDate(date.recent());
+    this.isDiverted = boolean();
+    this.isDirectFiled = boolean();
+    this.isGunCase = boolean();
+    this.isGunInvolved = boolean();
+    this.isTransferFromOtherCounty = boolean();
+    this.petitionNumber = generatePetitionNumber();
   }
 }
