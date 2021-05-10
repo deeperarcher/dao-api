@@ -6,4 +6,4 @@
 
 3) `docker-compose up`
 
-visit `http://localhost:4000/playground`
+visit `http://localhost:4000/graphql`
